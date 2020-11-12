@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://impressionyang.vercel.app</id>
+    <title>Gridea</title>
+    <updated>2020-11-12T05:05:24.063Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://impressionyang.vercel.app"/>
+    <link rel="self" href="https://impressionyang.vercel.app/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://impressionyang.vercel.app/images/avatar.png</logo>
+    <icon>https://impressionyang.vercel.app/favicon.ico</icon>
+    <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[使用picocm来进行Linux下的串口调试]]></title>
+        <id>https://impressionyang.vercel.app/post/picocom-dialy-use/</id>
+        <link href="https://impressionyang.vercel.app/post/picocom-dialy-use/">
+        </link>
+        <updated>2020-09-17T05:07:07.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>为什么不用<code>minicom</code>呢？功能又强大由好用不是。主要原因就是<code>minicom</code>没有彩色文字，看着难受，特别是调试<code>ARM Linux</code>的时候233</p>
+</blockquote>
+<h2 id="安装">安装</h2>
+<p>因为正常是在<code>Debian</code>系列的<code>Linux</code>发行版上面使用的(<code>deepin</code>或者<code>ubuntu</code>这些的，解决方案比较完善)，所以就是用<code>apt</code>来进行安装，其他发行版使用自己的包管理软件进行安装</p>
+<pre><code class="language-shell">sudo apt install picocom -y
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>为什么不用<code>minicom</code>呢？功能又强大由好用不是。主要原因就是<code>minicom</code>没有彩色文字，看着难受，特别是调试<code>ARM Linux</code>的时候233</p>
+</blockquote>
+<h2 id="安装">安装</h2>
+<p>因为正常是在<code>Debian</code>系列的<code>Linux</code>发行版上面使用的(<code>deepin</code>或者<code>ubuntu</code>这些的，解决方案比较完善)，所以就是用<code>apt</code>来进行安装，其他发行版使用自己的包管理软件进行安装</p>
+<pre><code class="language-shell">sudo apt install picocom -y
+</code></pre>
+<!-- more -->
+<h2 id="连接调试设备">连接调试设备</h2>
+<h3 id="连接前准备">连接前准备</h3>
+<p>首先要确定是接入的设备</p>
+<pre><code class="language-shell">dmesg | grep ttyUSB
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/picocom_check_dev.png" alt="picocom check dev" loading="lazy"></figure>
+<p>然后使得这个设备能被<code>picocom</code>工具访问使用</p>
+<pre><code class="language-shell">sudo chmod 777 /dev/ttyUSBx
+</code></pre>
+<p><em>请自行将ttyUSBx替换为当前使用的串口设备</em></p>
+<h3 id="连接串口设备">连接串口设备</h3>
+<p>下面是一般连接一个串口设备说使用的命令</p>
+<pre><code class="language-shell">picocom -b 115200 /dev/ttyUSBx
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://impressionyang.gitee.io/imgbed/img/blog/picocom_connect_dev.png" alt="picocom connect dev" loading="lazy"></figure>
+<p>参数讲解</p>
+<ul>
+<li>-b: 设置波特率参数</li>
+<li>/dev/ttyUSBx:串口设备，请替换为当前使用的串口设备</li>
+</ul>
+<h2 id="打开帮助提示页面">打开帮助提示页面</h2>
+<figure data-type="image" tabindex="3"><img src="https://impressionyang.gitee.io/imgbed/img/blog/picocom_get_help.png" alt="picocom get help" loading="lazy"></figure>
+<p>按动<code>Ctrl</code> <code>a+h</code>就可以弹出帮助页面，里面有相关的命令提示可以做什么，需要注意的一点是，里面的命令提示都是说<code>C-x</code>什么的，其实<code>C-</code>就是由<code>Ctrl+a</code>转义过来的，正如帮助页面的<code>C-h</code>，就是用<code>Ctrl</code> <code>a+h</code>打开的，所以其他的命令也是同理</p>
+<h2 id="发送接收文件">发送接收文件</h2>
+<p>如果直接使用上面的连接串口设备的命令直接去进行文件发送的话，你就会发现<code>Ctrl</code> <code>a+s</code>进行发送的时候根本没办法确定使用哪种协议进行的，很让人摸不着头脑(其实默认的传输发送接收模式之前的连接截图已经有曝光了，就是<code>z</code>模式233)，其实只要仔细点去阅读<code>picocom</code>的man文档的话就能够看到相关的发送接收小节里面有提及相关的内容</p>
+<figure data-type="image" tabindex="4"><img src="https://impressionyang.gitee.io/imgbed/img/blog/picocom_man.png" alt="picocom man" loading="lazy"></figure>
+<p>所以，确定好想使用何种方式进行传输之后就可以使用相应的命令去打开<code>picocom</code>了</p>
+<p>例如使用<code>ymode</code>进行发送接收的例子</p>
+<pre><code class="language-shell">picocom --send-cmd &quot;sb -vv&quot; --receive-cmd &quot;rb -vv&quot; -b 115200 /dev/ttyUSBx
+</code></pre>
+<p><em>同样的，使用当前的串口设备文件</em></p>
+<h2 id="退出picocom">退出picocom</h2>
+<p>直接就是按动<code>Ctrl</code> <code>a+q</code>就可以</p>
+<h2 id="尾声">尾声</h2>
+<p><code>picocom</code>相较于<code>minicom</code>功能性来说，还是有那么一点欠缺的，但是<code>picocom</code>毕竟颜值高呀，在这个看脸的时代，<code>picocom</code>难道不是最佳选择吗233[手动狗头]</p>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux下在文件夹所有文件中查找相关内容]]></title>
+        <id>https://impressionyang.vercel.app/post/search-content-in-files-of-dir/</id>
+        <link href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/">
+        </link>
+        <updated>2020-08-22T03:18:52.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>本文是为了记录在编程中进行一些在文件夹中查找某些关键字进行配置时查找文件过于麻烦的解决办法<br>
+在Linux开发中使用一些命令或者命令的配合进行查找文件内容及匹配关键词还是比较方便的。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>本文是为了记录在编程中进行一些在文件夹中查找某些关键字进行配置时查找文件过于麻烦的解决办法<br>
+在Linux开发中使用一些命令或者命令的配合进行查找文件内容及匹配关键词还是比较方便的。</p>
+</blockquote>
+<!-- more -->
+<h2 id="使用grep">使用grep</h2>
+<p>grep是在使用Linux时经常会用到的一个命令了，这个命令平时大都主要用来进行对一段输出的关键字定位，但是这个命令也可以通过使用某些参数来达到文件夹文件内容遍历的效果</p>
+<h3 id="命令原型">命令原型</h3>
+<pre><code class="language-shell">grep -nr &quot;str&quot; path
+</code></pre>
+<h3 id="参数说明">参数说明</h3>
+<ul>
+<li>grep: 就是grep命令</li>
+<li>-nr: n是line number行号，r是recursive，可以理解为遍历文件文件夹</li>
+<li>&quot;str&quot;: 双引号里面的str就是要查找的内容，用双引号何以使用空格和一些字符进行查找</li>
+<li>path: path就是查找路径，默认是<code>./</code>，也就是当前目录开始，也可以手动指定目录</li>
+</ul>
+<h3 id="实例">实例</h3>
+<pre><code class="language-shell">grep -nr &quot;/bin/bash&quot; /home/$USER
+</code></pre>
+<h3 id="优缺点">优缺点</h3>
+<ul>
+<li>优点：命令简单方便，简短</li>
+<li>缺点：会遍历所有文件，效率较低</li>
+</ul>
+<h2 id="使用find-xargs和grep配合">使用find、xargs和grep配合</h2>
+<p>find是查找指令，用来查找文件的；xargs可以将标准输入作为另一个命令的参数；grep上面已经解释过了。那么，如果使用find来循环查找文件，使用他输出的文件名作为参数给xargs，xargs再将文件名作为grep的参数输入，使用grep来查找文件内容进行定位不久可以实现文件内容查找了吗</p>
+<h3 id="命令原型-2">命令原型</h3>
+<pre><code class="language-shell">find path -name &quot;PATTEN&quot; | xargs grep -n &quot;str&quot; | grep &quot;str&quot;
+</code></pre>
+<h3 id="参数说明-2">参数说明</h3>
+<ul>
+<li>find、xargs、grep：上面已经讲过，分别是三个软件</li>
+<li>name：就是通过名字查找，后面跟着的参数可以通过正则表达式类似的方法限定文件名</li>
+<li>其他grep或者类似的参数据不赘述了</li>
+</ul>
+<h3 id="实例-2">实例</h3>
+<pre><code class="language-shell">find /home/$USER/.config -name &quot;*.sh&quot; | xargs grep &quot;/bin/bash&quot; | grep &quot;/bin/bash&quot;
+</code></pre>
+<h3 id="优缺点-2">优缺点</h3>
+<ul>
+<li>优点：可以通过-name来限定文件名，从而减少grep查看文件内容的次数，提高效率</li>
+<li>缺点：命令冗长，难记</li>
+</ul>
+<h2 id="后记">后记</h2>
+<p>关于这两种方法的取舍其实还是看日常使用过程，如果文件夹内的文件较少，可以使用第一种方法，方便快捷；但是如果文件很多的情况下为了节省查找时间，可以使用第二种方法，能够较为快速地查找到想要的内容。</p>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux解压缩文件]]></title>
+        <id>https://impressionyang.vercel.app/post/compress-file-extract-and-compress/</id>
+        <link href="https://impressionyang.vercel.app/post/compress-file-extract-and-compress/">
+        </link>
+        <updated>2020-08-11T13:50:31.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>先导：写这篇文章是为了记录在Linux下常用的、简单的进行压缩文件的解压缩以及打包压缩文件的方法，以方便自己未来忘记了在查询</p>
+</blockquote>
+<h2 id="全局说明">全局说明</h2>
+<p>下面的两个参数意义</p>
+<ul>
+<li><code>dest</code>：目标文件，压缩的话将<code>dest</code>换成你想要的文件名</li>
+<li><code>src</code>：来源文件，是一个文件或者一个文件夹，压缩要想打包多个就空格后追加接下来的文件或者文件夹，解压的就不行了</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>先导：写这篇文章是为了记录在Linux下常用的、简单的进行压缩文件的解压缩以及打包压缩文件的方法，以方便自己未来忘记了在查询</p>
+</blockquote>
+<h2 id="全局说明">全局说明</h2>
+<p>下面的两个参数意义</p>
+<ul>
+<li><code>dest</code>：目标文件，压缩的话将<code>dest</code>换成你想要的文件名</li>
+<li><code>src</code>：来源文件，是一个文件或者一个文件夹，压缩要想打包多个就空格后追加接下来的文件或者文件夹，解压的就不行了</li>
+</ul>
+<!-- more -->
+<h2 id="targz"><code>tar.gz</code></h2>
+<p>总的来说这是两种格式的压缩文件，<code>tar</code>是归档文件，<code>gz</code>是压缩文件，<code>tar.gz</code>是一种Linux下常用的压缩文件格式，一般的源代码包都是使用这种压缩文件的</p>
+<h4 id="打包压缩">打包压缩</h4>
+<p>将文件或者文件夹打包压缩成<code>tar.gz</code></p>
+<pre><code class="language-shell">tar -czvf dest.tar.gz src
+</code></pre>
+<h4 id="解压缩">解压缩</h4>
+<pre><code class="language-shell">tar -xzvf src.tar.gz
+</code></pre>
+<h4 id="说明">说明</h4>
+<ul>
+<li>参数<code>czxvf</code>说明如下：</li>
+</ul>
+<ol>
+<li><code>-c</code>: create,创建一个归档</li>
+<li><code>-z</code>: gzip、gunzip,gun的开放式压缩文档？</li>
+<li><code>-x</code>: extract,将文件从归档中提取出来</li>
+<li><code>-v</code>: verbose,详细的将文件列表信息打印出来</li>
+<li><code>-f</code>: file,从归档文件中操作</li>
+</ol>
+<h2 id="tarbz2"><code>tar.bz2</code></h2>
+<p>这个压缩文件格式和上一个差不多，也是先归档，然后才压缩一种压缩文件，不同的是压缩工具是<code>bzip2</code>。所以基本操作是一样的，只不过是压缩工具的参数换成<code>-j</code>就行了</p>
+<h4 id="打包压缩-2">打包压缩</h4>
+<pre><code class="language-shell">tar -cjvf dest.tar.bz2 src
+</code></pre>
+<h4 id="解压缩-2">解压缩</h4>
+<pre><code class="language-shell">tar -xjvf src.tar.bz2
+</code></pre>
+<h2 id="rar"><code>rar</code></h2>
+<h4 id="压缩打包">压缩打包</h4>
+<pre><code class="language-shell">rar a dest.rar src
+</code></pre>
+<h4 id="解压缩-3">解压缩</h4>
+<pre><code class="language-shell">unrar e src.rar
+</code></pre>
+<h4 id="参数说明">参数说明</h4>
+<ul>
+<li><code>a</code>: archive，添加文件至归档</li>
+<li><code>e</code>: extract, 将文件解压到当前位置</li>
+</ul>
+<h2 id="zip"><code>zip</code></h2>
+<h4 id="压缩打包-2">压缩打包</h4>
+<pre><code class="language-shell">zip -r dest.rar src
+</code></pre>
+<h4 id="解压缩-4">解压缩</h4>
+<pre><code class="language-shell">unzip -o src.rar
+</code></pre>
+<h4 id="参数说明-2">参数说明</h4>
+<ul>
+<li><code>r</code>: query，递归操作，子目录也打包</li>
+<li><code>o</code>: override, 覆盖解压缩</li>
+</ul>
+<h2 id="gzip"><code>gzip</code></h2>
+<h4 id="压缩打包-3">压缩打包</h4>
+<pre><code class="language-shell">gzip -c src &gt;dest.gz
+</code></pre>
+<h4 id="解压缩-5">解压缩</h4>
+<pre><code class="language-shell">gunzip -c src.gz &gt;dest
+</code></pre>
+<h4 id="参数说明-3">参数说明</h4>
+<ul>
+<li><code>c</code>: 保留原文件</li>
+</ul>
+<h2 id="bzip2"><code>bzip2</code></h2>
+<h4 id="压缩打包-4">压缩打包</h4>
+<pre><code class="language-shell">bzip2 -k src
+</code></pre>
+<ul>
+<li>运行后会在当前目录生成对应文件的压缩包，自动命名</li>
+</ul>
+<h4 id="解压缩-6">解压缩</h4>
+<pre><code class="language-shell">bzip2 -kd src.bz2
+</code></pre>
+<h4 id="参数说明-4">参数说明</h4>
+<ul>
+<li><code>k</code>: keep, 保留原文件</li>
+<li><code>d</code>: decompress, 解压缩</li>
+</ul>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言二级指针用法之模拟句柄用途]]></title>
+        <id>https://impressionyang.vercel.app/post/pointer-level2-as-handle/</id>
+        <link href="https://impressionyang.vercel.app/post/pointer-level2-as-handle/">
+        </link>
+        <updated>2020-08-11T13:47:45.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>因为在学习中使用到了二级指针进行操作，故而作此总结</p>
+</blockquote>
+<h2 id="提前了解">提前了解</h2>
+<h3 id="句柄">句柄</h3>
+<ul>
+<li>以下词条来自百度百科</li>
+</ul>
+<blockquote>
+<p>句柄（Handle）是一个是用来标识对象或者项目的标识符，可以用来描述窗体、文件等，值得注意的是句柄不能是常量 。<br>
+Windows之所以要设立句柄，根本上源于内存管理机制的问题，即虚拟地址。简而言之数据的地址需要变动，变动以后就需要有人来记录、管理变动，因此系统用句柄来记载数据地址的变更。在程序设计中，句柄是一种特殊的智能指针，当一个应用程序要引用其他系统（如数据库、操作系统）所管理的内存块或对象时，就要使用句柄 。</p>
+</blockquote>
+<h3 id="二级指针">二级指针</h3>
+<p>指针是C语言中最高深莫测的部分了，能够直接操作内存的这些指针如果使用得当的话可以完成很多很高效的代码。而二级或者多级指针则能够达到你之前想都不敢想的效果。</p>
+<ul>
+<li>以下来自于百度百科</li>
+</ul>
+<blockquote>
+<p>A(即B的地址)是指向指针的指针，称为二级指针，用于存放二级指针的变量称为二级指针变量．根据B的不同情况，二级指针又分为指向指针变量的指针和指向数组的指针。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>因为在学习中使用到了二级指针进行操作，故而作此总结</p>
+</blockquote>
+<h2 id="提前了解">提前了解</h2>
+<h3 id="句柄">句柄</h3>
+<ul>
+<li>以下词条来自百度百科</li>
+</ul>
+<blockquote>
+<p>句柄（Handle）是一个是用来标识对象或者项目的标识符，可以用来描述窗体、文件等，值得注意的是句柄不能是常量 。<br>
+Windows之所以要设立句柄，根本上源于内存管理机制的问题，即虚拟地址。简而言之数据的地址需要变动，变动以后就需要有人来记录、管理变动，因此系统用句柄来记载数据地址的变更。在程序设计中，句柄是一种特殊的智能指针，当一个应用程序要引用其他系统（如数据库、操作系统）所管理的内存块或对象时，就要使用句柄 。</p>
+</blockquote>
+<h3 id="二级指针">二级指针</h3>
+<p>指针是C语言中最高深莫测的部分了，能够直接操作内存的这些指针如果使用得当的话可以完成很多很高效的代码。而二级或者多级指针则能够达到你之前想都不敢想的效果。</p>
+<ul>
+<li>以下来自于百度百科</li>
+</ul>
+<blockquote>
+<p>A(即B的地址)是指向指针的指针，称为二级指针，用于存放二级指针的变量称为二级指针变量．根据B的不同情况，二级指针又分为指向指针变量的指针和指向数组的指针。</p>
+</blockquote>
+<!-- more -->
+<h2 id="提出需求">提出需求</h2>
+<p>这次总结的内容则是将指针当做句柄放进函数当形参是<strong>动态地申请空间</strong>来用作其他用途的。</p>
+<p>首先，我们要知道，我们如果直接把指针变量的地址当做函数的实参，去在函数里面申请空间，由于形参定义是一级指针，是无法拿到动态申请的空间的，以下就是一个实例</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+static void get_space(int* p)
+{
+    p = (int *)malloc(sizeof(int));
+    *p = 16;
+}
+
+int main()
+{
+    int a = 10;
+    int* pa = &amp;a;
+    printf(&quot;*pa=%d \t pa=%p \n&quot;, *pa, pa);
+    
+    get_space(&amp;pa);
+    printf(&quot;*pa=%d \t pa=%p \n&quot;, *pa, pa);
+    get_space(pa);
+    printf(&quot;*pa=%d \t pa=%p \n&quot;, *pa, pa);
+    return 0;
+}
+</code></pre>
+<p>运行得到以下结果</p>
+<figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/pointer_level2_1.png" alt="pointer level2 1" loading="lazy"></figure>
+<p>显然，这个结果正和上面所说的，在<code>main</code>函数传进去的实参，无论是指针变量还是地址，在函数里面的操作并不能通过一级指针的形参返回动态申请的空间，这样做很容易出现野指针现象。</p>
+<p>原因其实很简单，在形参定义的一级指针变量只是有从实参传递过来的地址而已，无论是<strong>指针变量内的地址</strong>还是<strong>指针变量本身的地址</strong>，只是存在形参一级指针变量当中，正如上面表现的，不管指针变量<code>p</code>的内容是<code>pa</code>或者<code>pa的地址</code>，只要使用<code>p</code>去获取空间的地址，便会使得指针<code>p</code>的内容从<code>pa</code>或者<code>pa的地址</code>变成新空间的地址，而在<code>main</code>函数中的<code>pa</code>并没有被影响到。</p>
+<p><strong>注意：上面的情况不要尝试用<code>*p</code>配合实参是<code>pa的地址</code>来接受新空间，会造成段错误，因为那样就是用一个<code>int</code>型的变量去接受一个<code>int*</code>型的值了</strong></p>
+<p>那么，如果我想通过指针去在函数中获取动态的空间要如何操作</p>
+<h2 id="解决方案">解决方案</h2>
+<p>其实通过上面的注意事项已经有一点眉目了，要想使用<code>*</code>符号来提取地址内容的方法来获得修改主函数传递的指针变量的内容权限的原理就是使得<code>*p</code>能够代表一个地址。由此可见，指针的指针那就是二级指针了，表现在代码中就是将上述的形参定义为二级指针并使用主函数的一级指针变量去传递参数。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+static void get_space(int** p)
+{
+    *p = (int *)malloc(sizeof(int));
+    int* temp = *p;
+    *temp = 66;
+}
+
+int main()
+{
+    int a = 10;
+    int* pa = &amp;a;
+    printf(&quot;*pa=%d \t pa=%p \n&quot;, *pa, pa);
+
+    get_space(&amp;pa);
+    printf(&quot;*pa=%d \t pa=%p \n&quot;, *pa, pa);
+    return 0;
+}
+</code></pre>
+<p>运行得到以下结果：</p>
+<figure data-type="image" tabindex="2"><img src="https://impressionyang.gitee.io/imgbed/img/blog/pointer_level2_2.png" alt="pointer level2 2" loading="lazy"></figure>
+<p>由此便能通过一个指针在函数中去动态申请空间并返回上一层中了。</p>
+<h2 id="应用场景">应用场景</h2>
+<p>光是看上面的例子并不能了解这种方法的强大之处，但是模仿上面所说的句柄的思想，来举例说说这个方案的好处吧。</p>
+<p>首先假设，你负责一个项目的某个模块的编写，需要编写出<em>测试app</em>，<em>模块实现</em>以及<em>该模块所需的协议</em>，并且为了减少各个方法与模块之间的耦合性以及代码的简洁效率等因素不允许大量使用全局变量，但是你要完成这个模块有需要很多的变量来存储一些参数以供该模块实现内的各个方法进行调用，这时候要怎么解决呢？</p>
+<p>结构体是解决这种变量多的一种方案，但是如果在模块内使用全局变量的话你又如何管理这些空间呢（如果里面有较大的空间占用），只能等程序结束时清除吗</p>
+<p>这时候使用一个指针变量来保存一个动态空间的地址来进行操作显然更方便，也就是使用一个<code>void*</code>型指针变量来存储地址，在模块初始化时申请空间，模块进行功能时将地址下放，用完后动态地清理该空间。而这个<code>void*</code>型的指针就是本次提出的句柄的模仿。</p>
+<p>光是空口说出有点不太好说明该方案的可行性，下面用一个小例子来证明：</p>
+<ul>
+<li>假设下面的主函数函数和其他函数不在同一文件中</li>
+</ul>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+
+typedef struct couple_num
+{
+    int a;
+    char b;
+} couple_num_t;
+
+void get_space(void** a)
+{
+    printf(&quot;*a addr:%p\n&quot;, *a);
+    *a = (couple_num_t *) malloc (sizeof(couple_num_t));
+    printf(&quot;%p\n&quot;, a);
+    couple_num_t *p = *a;
+    p-&gt;a = 1000;
+    p-&gt;b = 'r';
+}
+
+void show(void *a)
+{
+    printf(&quot;*a addr:%p\n&quot;, a);
+    couple_num_t* temp = a;
+    printf(&quot;show:\n%d\n%c\n&quot;,temp-&gt;a, temp-&gt;b);
+}
+
+void release(void** a)
+{
+    free(*a);
+}
+
+int main()
+{
+    void *p = NULL;
+
+    printf(&quot;origin p addr:%p\n&quot;, p);
+
+    get_space(&amp;p);
+    printf(&quot;after change p addr:%p\n&quot;, p);
+
+    couple_num_t* temp = p;
+    printf(&quot;temp:%d\n&quot;,temp-&gt;a);
+
+    show(p);
+
+    release(&amp;p);
+    printf(&quot;after release p addr：%p\n&quot;, p);
+    
+    show(p);
+
+    getchar();
+
+    return 0;
+}
+</code></pre>
+<p>运行结果如下：</p>
+<figure data-type="image" tabindex="3"><img src="https://impressionyang.gitee.io/imgbed/img/blog/pointer_level2_3.png" alt="pointer level2 3" loading="lazy"></figure>
+<p>可以看到，使用这种方法，不用在主函数暴露结构体内容，也能够将结构体的地址空间进行掌握，高效的利用了指针的特性完成功能，使得各个方法之间相互影响减少，参数传递也简单，并且在使用完成后还能动态清除空间。</p>
+<h2 id="后记">后记</h2>
+<p>这种方法在C语言下设计功能模块时特别有用，模仿了面向对象的句柄思想，减少模块间的耦合（不使用全局变量，各方法就不会无意间相互干扰了）。</p>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[给pugjs的stun主题添加canvas时钟]]></title>
+        <id>https://impressionyang.vercel.app/post/add-canvas-clock-in-pugjs/</id>
+        <link href="https://impressionyang.vercel.app/post/add-canvas-clock-in-pugjs/">
+        </link>
+        <updated>2020-08-07T12:23:18.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<p>首先隔了这么久才继续进行更新的原因是网站备案和毕业设计，加上刚入职没有时间去进行内容更新，以后会继续更新了</p>
+<p>在pugjs中添加一些好用的东西这个系列会长期的添加更新，因为这些都是会用在博客当中的，而且这些操作都比较简单，都是在主题的相应文件位置添加相应代码即可。</p>
+<h2 id="内容介绍">内容介绍</h2>
+<p>这次添加的内容是在右边栏那里加上一个时钟，用来给阅读的人直观地看到时间，时钟的代码是直接从网上拷贝下来的，并且自己做了修改，地址是<a href="https://www.helloweba.net/demo/html5clock/">这里</a>,打开这个链接就能看到一个时钟，此时检查页面元素定位到时钟所在的div标签，其中有一个canvas标签，将其复制下来，并且找到下面与之最近的script标签查看到时钟的逻辑代码，也将其复制下来进行修改后就差不多可以使用了。</p>
+<p><strong>首先声明，代码是直接复制的，复制也没有删除，主要是为了学习用途，如果造成侵权或者修改了不应修改的地方，还请拿出版权证据证明后修改或者删除您的代码，自行复制后造成的一切问题与我无关</strong></p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<p>首先隔了这么久才继续进行更新的原因是网站备案和毕业设计，加上刚入职没有时间去进行内容更新，以后会继续更新了</p>
+<p>在pugjs中添加一些好用的东西这个系列会长期的添加更新，因为这些都是会用在博客当中的，而且这些操作都比较简单，都是在主题的相应文件位置添加相应代码即可。</p>
+<h2 id="内容介绍">内容介绍</h2>
+<p>这次添加的内容是在右边栏那里加上一个时钟，用来给阅读的人直观地看到时间，时钟的代码是直接从网上拷贝下来的，并且自己做了修改，地址是<a href="https://www.helloweba.net/demo/html5clock/">这里</a>,打开这个链接就能看到一个时钟，此时检查页面元素定位到时钟所在的div标签，其中有一个canvas标签，将其复制下来，并且找到下面与之最近的script标签查看到时钟的逻辑代码，也将其复制下来进行修改后就差不多可以使用了。</p>
+<p><strong>首先声明，代码是直接复制的，复制也没有删除，主要是为了学习用途，如果造成侵权或者修改了不应修改的地方，还请拿出版权证据证明后修改或者删除您的代码，自行复制后造成的一切问题与我无关</strong></p>
+<!--  more-->
+<h2 id="脚本代码">脚本代码</h2>
+<h3 id="原脚本">原脚本</h3>
+<ul>
+<li>复制下来的脚本内容大致如下，内容有点多请别介意，方便复制</li>
+</ul>
+<pre><code class="language-html">&lt;canvas id=&quot;clock&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var time = new Date();
+var h = time.getHours(); //时
+var m = time.getMinutes(); //分
+var s = time.getSeconds(); //秒
+h=h&gt;12?(h-12)*5+parseInt(m/12):h*5+parseInt(m/12); //时针 初始位置
+//=====================================
+var x=200,y=200,sAngle=0; //x y 原点 秒针角度变量
+ 
+function draw(){
+    var c=document.getElementById(&quot;clock&quot;);
+    var ctx=c.getContext(&quot;2d&quot;); //获取绘图对象
+    ctx.clearRect(0,0,c.width,c.height); //清除上次绘制的图形
+    s++;//秒针
+ 
+    ctx.fillStyle = '#fff' //填充白色背景色 
+    ctx.fillRect(0,0,c.width,c.height);   //设置画布区域
+ 
+	//填充圆点，在画布中心（200,200）绘制一个半径10px的圆形
+	ctx.beginPath();
+	ctx.arc(x,y,10,0,Math.PI*2,true);
+	ctx.fill();
+	ctx.closePath();
+ 		
+	//填充版权文字
+	ctx.fillStyle=&quot;#ccc&quot;;
+	ctx.font = &quot;12pt Arial&quot;; 
+	ctx.fillText(&quot;Helloweba.com&quot;,150,250);
+	//调用日期并填充到画布中
+	ctx.fillStyle=&quot;#666&quot;;
+	ctx.font = &quot;14pt Verdana&quot;;
+	ctx.fillText(time.getMonth()+1+&quot;-&quot;+time.getDate(),183,170);
+		
+	ctx.save(); //保存当前绘图状态
+ 
+    // 时间刻度
+    for(var i=0;i&lt;12;i++){
+        var angle=(Math.PI*2)/12;
+        ctx.beginPath();//开始绘制
+		ctx.font=&quot;12px Arial&quot;;
+        if(i==0||i==3||i==6||i==9){
+             ctx.fillStyle=&quot;red&quot;;
+             radius=4;
+        }else{
+             ctx.fillStyle=&quot;blue&quot;;
+             radius=3;
+        }
+ 
+        ctx.arc(x,y-100,radius,0,Math.PI*2,true); //画圆
+        ctx.fill(); //填充路径
+        trans(ctx,x,y,angle);  //刻度分布              
+    }
+    ctx.restore(); //恢复上次保存的绘图状态
+ 
+    sAngle=(Math.PI*2)/60*s; //秒度
+	//时针转动
+    ctx.save(); 
+    ctx.strokeStyle=&quot;red&quot;;
+    ctx.lineWidth=3;
+    trans(ctx,x,y,(Math.PI*2)/60*h); 
+    pointer(ctx,x,y,y-40);
+    ctx.restore();
+ 	
+	//分针转动
+	ctx.save();
+	ctx.strokeStyle=&quot;blue&quot;;
+	ctx.lineWidth=2;
+	trans(ctx,x,y,(Math.PI*2)/60*m); 
+	pointer(ctx,x,y,y-68);
+	ctx.restore();
+ 
+	//秒针转动
+	ctx.save();
+	ctx.strokeStyle=&quot;#000&quot;;
+	trans(ctx,x,y,sAngle);  
+	pointer(ctx,x,y,y-80);
+	ctx.restore();  
+ 
+    //数据整理
+    if(s%60==0){
+		sAngle=0,s=0,m++;
+        if(m%12==0){ //每十二分 时针旋转一次
+            if(m!=0)h++;
+            if(m%60==0)m=0;
+        }
+     	if(h%60==0)h=0; 
+    }
+}
+ 
+//绘制指针
+function pointer(ctx,x,y,z){
+     ctx.beginPath();
+     ctx.moveTo(x,y);
+     ctx.lineTo(x,z);
+     ctx.stroke();
+     ctx.fill();
+}
+ 
+ //据坐标旋转
+function trans(ctx,x,y,angle){
+     ctx.transform(Math.cos(angle), Math.sin(angle), 
+        -Math.sin(angle), Math.cos(angle), 
+        x*(1-Math.cos(angle)) + x*Math.sin(angle), 
+      	y*(1-Math.cos(angle)) - y*Math.sin(angle))
+}
+ 
+setInterval(&quot;draw()&quot;,1000);
+&lt;/script&gt;
+</code></pre>
+<h3 id="修改后的脚本">修改后的脚本</h3>
+<p>下面是修改后用之前的网站进行转换成pugjs的脚本，懒一点的就直接复制下面代码吧</p>
+<pre><code class="language-js">br
+div(style='position: relative;top: 0px;left: 0px;')
+  canvas#clock(width='250', height='250')
+script.
+  var time = new Date();
+  var h = time.getHours(); //时
+  var m = time.getMinutes(); //分
+  var s = time.getSeconds(); //秒
+  h = h &gt; 12 ? (h - 12) * 5 + parseInt(m / 12) : h * 5 + parseInt(m / 12); //时针 初始位置
+  //=====================================
+  var cc = document.getElementById(&quot;clock&quot;);
+  var x = cc.width/2.0, y = cc.height/2.0, sAngle = 0; //x y 原点 秒针角度变量
+  function draw() {
+  var c = document.getElementById(&quot;clock&quot;);
+  var ctx = c.getContext(&quot;2d&quot;); //获取绘图对象
+  ctx.clearRect(0, 0, c.width, c.height); //清除上次绘制的图形
+  s++;//秒针
+  ctx.fillStyle = '#fff' //填充白色背景色
+  ctx.fillRect(0, 0, c.width, c.height);   //设置画布区域
+  //填充圆点，在画布中心（200,200）绘制一个半径10px的圆形
+  ctx.beginPath();
+  ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+  ctx.fill();
+  ctx.closePath();
+  //填充版权文字
+  ctx.fillStyle = &quot;#ccc&quot;;
+  ctx.font = &quot;12pt Arial&quot;;
+  // ctx.fillText(&quot;impressionyang.top&quot;, 10, c.height-10);
+  //调用日期并填充到画布中
+  ctx.fillStyle = &quot;#666&quot;;
+  ctx.font = &quot;14pt Verdana&quot;;
+  ctx.fillText(time.getMonth() + 1 + &quot;-&quot; + time.getDate(), c.width/2, c.height/2);
+  ctx.save(); //保存当前绘图状态
+  // 时间刻度
+  for (var i = 0; i &lt; 12; i++) {
+  var angle = (Math.PI * 2) / 12;
+  ctx.beginPath();//开始绘制
+  ctx.font = &quot;12px Arial&quot;;
+  if (i == 0 || i == 3 || i == 6 || i == 9) {
+  ctx.fillStyle = &quot;red&quot;;
+  radius = 4;
+  } else {
+  ctx.fillStyle = &quot;blue&quot;;
+  radius = 3;
+  }
+  ctx.arc(x, y - 100, radius, 0, Math.PI * 2, true); //画圆
+  ctx.fill(); //填充路径
+  trans(ctx, x, y, angle);  //刻度分布
+  }
+  ctx.restore(); //恢复上次保存的绘图状态
+  sAngle = (Math.PI * 2) / 60 * s; //秒度
+  //时针转动
+  ctx.save();
+  ctx.strokeStyle = &quot;red&quot;;
+  ctx.lineWidth = 3;
+  trans(ctx, x, y, (Math.PI * 2) / 60 * h);
+  pointer(ctx, x, y, y - 40);
+  ctx.restore();
+  //分针转动
+  ctx.save();
+  ctx.strokeStyle = &quot;blue&quot;;
+  ctx.lineWidth = 2;
+  trans(ctx, x, y, (Math.PI * 2) / 60 * m);
+  pointer(ctx, x, y, y - 68);
+  ctx.restore();
+  //秒针转动
+  ctx.save();
+  ctx.strokeStyle = &quot;#000&quot;;
+  trans(ctx, x, y, sAngle);
+  pointer(ctx, x, y, y - 80);
+  ctx.restore();
+  //数据整理
+  if (s % 60 == 0) {
+  sAngle = 0, s = 0, m++;
+  if (m % 12 == 0) { //每十二分 时针旋转一次
+  if (m != 0) h++;
+  if (m % 60 == 0) m = 0;
+  }
+  if (h % 60 == 0) h = 0;
+  }
+  }
+  //绘制指针
+  function pointer(ctx, x, y, z) {
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x, z);
+  ctx.stroke();
+  ctx.fill();
+  }
+  //据坐标旋转
+  function trans(ctx, x, y, angle) {
+  ctx.transform(Math.cos(angle), Math.sin(angle),
+  -Math.sin(angle), Math.cos(angle),
+  x * (1 - Math.cos(angle)) + x * Math.sin(angle),
+  y * (1 - Math.cos(angle)) - y * Math.sin(angle))
+  }
+  setInterval(&quot;draw()&quot;, 1000);
+
+</code></pre>
+<p>至此就能够添加这个时钟到网站里面了，是不是感觉很简单呢。</p>
+<h2 id="后记">后记</h2>
+<p>虽然觉得直接拉取被人的东西有点不太厚道，但是我可是最强缝合怪啊，想拿来凑一凑再说哈哈哈。</p>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最近网站备案中。。。]]></title>
+        <id>https://impressionyang.vercel.app/post/the-blog-is-put-on-record/</id>
+        <link href="https://impressionyang.vercel.app/post/the-blog-is-put-on-record/">
+        </link>
+        <updated>2020-04-21T09:10:07.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="说明">说明</h2>
+<blockquote>
+<p>打算是主要打理国内的空间，当然github也会同步发布，是所以使用未备案的域名感觉还是挺不妥当的，还是备案一下，但是我万万没想到的是备案有那么多需要注意的问题</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="说明">说明</h2>
+<blockquote>
+<p>打算是主要打理国内的空间，当然github也会同步发布，是所以使用未备案的域名感觉还是挺不妥当的，还是备案一下，但是我万万没想到的是备案有那么多需要注意的问题</p>
+</blockquote>
+<!-- more -->
+<h2 id="博客现有问题">博客现有问题</h2>
+<ul>
+<li>现在博客的一些相关功能已经被我暂停了,后面慢慢恢复</li>
+<li>原来的域名无法访问，除非使用pages的二级域名<a href="https://impressionyang.github.io">impressionyang.github.io</a>、<a href="https://impressionyang.gitee.io">impressionyang.gitee.io</a></li>
+</ul>
+<h2 id="备案历程还未备案成功">备案历程[还未备案成功]</h2>
+<ul>
+<li>先是在阿里云进行备案，然后发现要使用他们的实例来备案，然后备案的流程好事太长，最终卡在了使用复印件提交管局的步骤，不耐烦然后放弃了，因为还要申请阿里云的幕布</li>
+<li>现在在西部数码进行电子化备案，但是因为网站名称退回了一次，但是他们的处理速度挺快，所以在继续备案</li>
+</ul>
+<h2 id="后记">后记</h2>
+<p>原来以为备案网站很简单，原来还是太年轻了，以后打算使用西部数码的虚拟主机+GitHub Pages+Gitee Pages三方面进行文章的发布了</p>
+<p>祝我顺利</p>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Arch Linux切换rEFInd开机引导程序]]></title>
+        <id>https://impressionyang.vercel.app/post/arch-refind-bootloader-efi/</id>
+        <link href="https://impressionyang.vercel.app/post/arch-refind-bootloader-efi/">
+        </link>
+        <updated>2020-03-30T01:35:19.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<p>以下<code>rEFInd</code>的<code>arckwiki</code>词条的内容：</p>
+<blockquote>
+<p>rEFInd 是一个 UEFI 启动管理器。它是 rEFIt （不再维护）的一个分支并且针对非 Mac 硬件修复了若干问题。它被设计为平台无关，可启动多个操作系统。</p>
+</blockquote>
+<p>使用<code>rEFInd</code>的需求是我原来使用的是<code>bootctl</code>这个启动引导程序,虽然简单好用,但是只有黑白界面难免有点单调,所以就想使用一个比较漂亮的但是文件结构又简洁的<code>bootloader</code>,所以<code>grub</code>就被丢弃了,虽然它的却很强大,但是文件结构有点复杂,配置影响因素有点多</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<p>以下<code>rEFInd</code>的<code>arckwiki</code>词条的内容：</p>
+<blockquote>
+<p>rEFInd 是一个 UEFI 启动管理器。它是 rEFIt （不再维护）的一个分支并且针对非 Mac 硬件修复了若干问题。它被设计为平台无关，可启动多个操作系统。</p>
+</blockquote>
+<p>使用<code>rEFInd</code>的需求是我原来使用的是<code>bootctl</code>这个启动引导程序,虽然简单好用,但是只有黑白界面难免有点单调,所以就想使用一个比较漂亮的但是文件结构又简洁的<code>bootloader</code>,所以<code>grub</code>就被丢弃了,虽然它的却很强大,但是文件结构有点复杂,配置影响因素有点多</p>
+<!-- more -->
+<h2 id="安装refind">安装rEFInd</h2>
+<pre><code class="language-shell">sudo pacman -S refind-efi
+</code></pre>
+<h2 id="配置">配置</h2>
+<h3 id="备份原有引导">备份原有引导</h3>
+<p>首先备份移除原有的<code>bootloader</code>,我之前用的是<code>bootctl</code>,所以需要备份<code>/boot/loader</code>文件夹和<code>/boot/EFI/systemd/systemd-bootx64.efi</code>文件</p>
+<pre><code class="language-shell">cp -r /boot/loader  ~/loader
+cp -r /boot/EFI/systemd ~/systemd
+</code></pre>
+<h3 id="配置refind">配置rEFInd</h3>
+<p>安装<code>rEFInd</code>引导文件至启动分区:</p>
+<pre><code class="language-shell">sudo refind-install
+</code></pre>
+<p>一般情况下能够直接进行安装,如果出问题请查看<code>archwiki</code>的<code>rEFInd</code>的手动安装引导文件小节,请点击<a href="https://wiki.archlinux.org/index.php/REFInd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85">这里</a></p>
+<h4 id="配置主题">配置主题</h4>
+<p>rEFInd的主题可以在<a href="https://github.com/search?q=rEFInd+theme&amp;type=">github</a>中自己搜索得到</p>
+<p>将自己心仪的主题下载下来之后将其解压至<code>/boot/refind/themes</code>中,在<code>/boot/refind/refind.conf</code>的末尾加入<code>include themes/你下载的主题/theme.conf</code>即可生效.</p>
+<h4 id="配置自定义启动项">配置自定义启动项</h4>
+<p>编辑文件<code>/boot/EFI/refind/refind.conf</code>中向下滑差不多到3/4位置的位置中的<code>Arch Linux</code>小节,将其中的文件配置成自己的启动方式,下面的例子是我的</p>
+<pre><code class="language-shell">menuentry &quot;Arch Linux&quot; {
+    icon     /EFI/refind/themes/refind-ambience/icons/os_arch.png
+    #volume   &quot;Arch Linux&quot;
+    loader   /vmlinuz-linux
+    initrd   /amd-ucode.img
+    initrd   /initramfs-linux.img
+    options  &quot;root=PARTUUID=7ce1b087-1f97-4a98-ac50-408353207b92 rw&quot;
+    submenuentry &quot;Boot using fallback initramfs&quot; {
+        initrd /initramfs-linux-fallback.img
+    }
+    submenuentry &quot;Boot to terminal&quot; {
+        add_options &quot;systemd.unit=multi-user.target&quot;
+    }
+    #disabled
+}
+</code></pre>
+<p>可以看到的的启动的<code>icon</code>是使用主题里面提供的,可以使得启动的界面更加统一</p>
+<h2 id="后记">后记</h2>
+<p><code>rEFInd</code>启动引导程序还是很秀的,主题也挺美观,下面放一张效果图(虚拟机中的)</p>
+<figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/2020-03-30_10-51.png" alt="效果" loading="lazy"></figure>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Qt文件操作QFile]]></title>
+        <id>https://impressionyang.vercel.app/post/qt-qfile-note/</id>
+        <link href="https://impressionyang.vercel.app/post/qt-qfile-note/">
+        </link>
+        <updated>2020-03-29T11:50:18.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>因为有需求使用<code>Qt</code>的文件<code>I/O</code>操作,所以做此记录以供后用</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>因为有需求使用<code>Qt</code>的文件<code>I/O</code>操作,所以做此记录以供后用</p>
+</blockquote>
+<!-- more -->
+<h2 id="使用">使用</h2>
+<h3 id="简单使用以及说明">简单使用以及说明</h3>
+<p>简单的使用基本上分4步:</p>
+<ol>
+<li>定义文件变量</li>
+<li>打开文件</li>
+<li>执行文件<code>I/O</code>操作</li>
+<li>关闭文件</li>
+</ol>
+<p>简单使用读取文件:</p>
+<pre><code class="language-C++">    QFile file(&quot;your file path&quot;);
+    file.open(QFile::ReadOnly);
+    QByteArray buf;
+    while(file.read(buf.data(),1024)&gt;0){
+        cout&lt;&lt;buf;
+        buf.clear();
+    }
+    file.close();
+</code></pre>
+<p>上述文件读取操作中,使用的是<code>C++</code>习惯下的<code>read</code>函数,其使用也和<code>C++</code>的<code>read</code>函数差不多,需要讲解一下的是<code>QFile</code>的<code>open</code>函数的参数,有以下的表列</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NotOpen</td>
+<td>不打开文件</td>
+</tr>
+<tr>
+<td>ReadOnly</td>
+<td>只读</td>
+</tr>
+<tr>
+<td>WriteOnly</td>
+<td>只写</td>
+</tr>
+<tr>
+<td>ReadWrite</td>
+<td>可读写</td>
+</tr>
+<tr>
+<td>Append</td>
+<td>追加</td>
+</tr>
+<tr>
+<td>Truncate</td>
+<td>尽可能在打开文件前删除</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>限定文本操作,读文件的话结束符翻译为文本的<code>\n</code>,写文件则结尾时写入当前系统的文本结束符,例如<code>win</code>的<code>\n\r</code></td>
+</tr>
+<tr>
+<td>Unbuffered</td>
+<td>不能使用缓存流<code>I/O</code></td>
+</tr>
+<tr>
+<td>NewOnly</td>
+<td>在创建文件的时候确保文件是不存在的,不然文件不能打开</td>
+</tr>
+<tr>
+<td>ExistingOnly</td>
+<td>在读取文件是确保文件是存在的,不然文件不能打开</td>
+</tr>
+</tbody>
+</table>
+<p>简单写入文件</p>
+<pre><code class="language-C++">    QFile file(&quot;your file path&quot;);
+    file.open(QFile::WriteOnly | QFile::Truncate);
+    QByteArray buf(&quot;text to write&quot;);
+    file.write(buf);
+    file.close();
+</code></pre>
+<h3 id="使用stream进行读写">使用<code>stream</code>进行读写</h3>
+<p>使用<code>stream</code>进行读写时可以使用输入(<code>&gt;&gt;</code>)输出(<code>&lt;&lt;</code>)流符号进行格式化输入输出,读写方便,在<code>Qt</code>的文件<code>I/O</code>中可以使用<code>QTextStream</code>和<code>QDateStream</code>来对文件进行操作</p>
+<p>读取文件:</p>
+<pre><code class="language-C++">    QFile file(&quot;in.txt&quot;);
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+        return;
+
+    QByteArray buf;
+    QTextStream in(&amp;file);
+    while (!in.atEnd()) {
+        in&gt;&gt;buf.data();
+        cout&lt;&lt;buf;
+        buf.clear();
+    }
+    file.close();
+</code></pre>
+<p>写入文件:</p>
+<pre><code class="language-C++">    QFile file(&quot;out.txt&quot;);
+    if (!file.open(QFile::WriteOnly | QFile::Text))
+        return;
+
+    QTextStream out(&amp;file);
+    out &lt;&lt; &quot;a=&quot; &lt;&lt; 1 &lt;&lt; &quot;\n&quot;;
+    out.flush();
+    file.close();
+</code></pre>
+<h2 id="后记">后记</h2>
+<p><code>Qt</code>的文件操作对于一个应用软件来说是一个重要的使用方式,虽然上面讲述了<code>Qt</code>文件<code>I/O</code>的基本操作,但是其使用方式还有很多,这仅仅是最基本的使用方式而已,以后还有很多东西需要学习的</p>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Qt UDP广播]]></title>
+        <id>https://impressionyang.vercel.app/post/qt-udp-brocast/</id>
+        <link href="https://impressionyang.vercel.app/post/qt-udp-brocast/">
+        </link>
+        <updated>2020-03-28T11:57:07.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>最近有使用<code>QT</code>的<code>UDP</code>广播,所以记录这篇帖子记录一下</p>
+</blockquote>
+<h2 id="讲解">讲解</h2>
+<p>什么是<code>UDP</code>广播,我就不搬百科的内容了,就按照我的一点理解来说吧</p>
+<p><code>UDP</code>是一种网络进程间通信的技术,一般和<code>TCP</code>一起出现,<code>UDP</code>的通信优势是速度快、不需要确定对方<code>IP</code>地址，但是缺点是连接不可靠。而<code>UDP</code>广播是<code>UDP</code>下的一种通讯手段，他作为广播发送端（使用<code>writeDatagram()</code>方法）时可以在当前网络下的广播地址中进行发送广播信息，而任何接收端(使用<code>readDatagram()</code>方法)都能接收到服务器<strong>当前发送</strong>的广播信息</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>最近有使用<code>QT</code>的<code>UDP</code>广播,所以记录这篇帖子记录一下</p>
+</blockquote>
+<h2 id="讲解">讲解</h2>
+<p>什么是<code>UDP</code>广播,我就不搬百科的内容了,就按照我的一点理解来说吧</p>
+<p><code>UDP</code>是一种网络进程间通信的技术,一般和<code>TCP</code>一起出现,<code>UDP</code>的通信优势是速度快、不需要确定对方<code>IP</code>地址，但是缺点是连接不可靠。而<code>UDP</code>广播是<code>UDP</code>下的一种通讯手段，他作为广播发送端（使用<code>writeDatagram()</code>方法）时可以在当前网络下的广播地址中进行发送广播信息，而任何接收端(使用<code>readDatagram()</code>方法)都能接收到服务器<strong>当前发送</strong>的广播信息</p>
+<!-- more -->
+<h2 id="代码实例">代码实例</h2>
+<ul>
+<li>只写出关键的代码，完整带图形界面的测试项目已经上传至<a href="https://github.com/impressionyang/qt_udp_brocast_test">我的github</a></li>
+</ul>
+<h3 id="发送端">发送端</h3>
+<pre><code class="language-c++">UdpBrocastServer::UdpBrocastServer(QString msg) {
+  brocast_server = new QUdpSocket();
+  if (!msg.isEmpty()) {
+    brocast_server-&gt;writeDatagram(msg.toLocal8Bit(), QHostAddress::Broadcast,
+                                  10086);
+  } else {
+    qDebug() &lt;&lt; &quot;brocast server: msg is empty!&quot;;
+  }
+}
+</code></pre>
+<h3 id="接收端">接收端</h3>
+<pre><code class="language-C++">UdpBrocastClient::UdpBrocastClient() {
+  brocast_client = new QUdpSocket();
+  brocast_client-&gt;bind(10086, QUdpSocket::ShareAddress);
+
+  QObject::connect(brocast_client, &amp;QUdpSocket::readyRead, this, [=]() {
+    //
+    QByteArray datagram;
+    datagram.resize(brocast_client-&gt;pendingDatagramSize());
+    brocast_client-&gt;readDatagram(datagram.data(), datagram.size());
+    emit getBrocastMsg(QString(datagram));
+  });
+}
+</code></pre>
+<h2 id="测试">测试</h2>
+<p>带图形界面的测试</p>
+<figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/deepinscreen20200328205119.gif" alt="test" loading="lazy"></figure>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[为主题用pugjs编写的hexo博客添加网站运行时间]]></title>
+        <id>https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/</id>
+        <link href="https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/">
+        </link>
+        <updated>2020-03-27T14:59:08.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>写这篇帖子的原因是我很想在博客网站下面添加网站的运行时间,网上虽然有教程是怎么添加的,但是他们演示的主题大都是用<code>ejs</code>或者是<code>wig</code>来编写的,而我使用的这个个人很喜欢的<code>stun</code>主题却是用<code>pugjs</code>编写的,实在是很想用,所以根据语法的转换规则修改了一份<code>pug</code>文件下添加的脚本来使用,美滋滋</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>写这篇帖子的原因是我很想在博客网站下面添加网站的运行时间,网上虽然有教程是怎么添加的,但是他们演示的主题大都是用<code>ejs</code>或者是<code>wig</code>来编写的,而我使用的这个个人很喜欢的<code>stun</code>主题却是用<code>pugjs</code>编写的,实在是很想用,所以根据语法的转换规则修改了一份<code>pug</code>文件下添加的脚本来使用,美滋滋</p>
+</blockquote>
+<!-- more -->
+<h2 id="脚本">脚本</h2>
+<ul>
+<li>语法参考的话可以去<a href="https://www.npmjs.com/package/pug">这里</a></li>
+</ul>
+<p>原来的<code>ejs</code>脚本</p>
+<pre><code class="language-js">&lt;div&gt;
+&lt;span id=&quot;timeDate&quot;&gt;载入天数...&lt;/span&gt;&lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt;
+&lt;script&gt;
+    var now = new Date();
+    function createtime() {
+        var grt= new Date(&quot;08/13/2018 00:00:00&quot;);
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;}
+        document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;;
+        document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;
+    }
+setInterval(&quot;createtime()&quot;,250);
+&lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+<p>转换后的<code>pugjs</code>脚本</p>
+<pre><code class="language-pug">div
+  span#timeDate 载入天数...
+  span#times 载入时分秒...
+  script.
+    var now = new Date();
+    function createtime() {
+    var grt= new Date(&quot;08/13/2018 00:00:00&quot;);
+    now.setTime(now.getTime()+250);
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+    if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;}
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;}
+    document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;;
+    document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;
+    }
+    setInterval(&quot;createtime()&quot;,250);
+</code></pre>
+<p>然后把上述脚本添加到主题的<code>layout/_partials/footer/footer.pug</code>文件中(不同主题可能文件不一样,请自行参考)即可在网页底部显示网站运行时间了<code>OvO</code>,不过要注意修改一下<code>var grt= new Date(&quot;08/13/2018 00:00:00&quot;);</code>中的起始时间哦!</p>
+<ul>
+<li>效果</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/deepinscreen20200327231833.gif" alt="run time" loading="lazy"></figure>
+<h2 id="后记">后记</h2>
+<p>后来发现了一个神奇的网站可以帮助从<code>html</code>转到<code>pug</code>,<a href="https://html-to-pug.com/">请戳这里</a>,难受,虽然上面的不难翻译,但是用这个网站不费力是真的....</p>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
+</feed>
