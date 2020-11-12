@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="keywords" content="Gridea静态个人博客">
+<meta name="keywords" content="impressionyang个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Arch Linux切换rEFInd开机引导程序 | Gridea</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1605157512736">
+<link rel="shortcut icon" href="/favicon.ico?v=1605157980430">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -179,7 +179,13 @@
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
-    <p class="site-author-name">适用 Gemini,Pisces 布局,版权说明需配置</p>
+    <p class="site-author-name">impressionyang</p>
+    
+    <div class="site-description right-motion">
+      
+        <p id="binft">Looooooove cooooooooding</p>
+      
+    </div>
     
   </div>
   <div class="sidebar-item side-item-stat right-motion">
@@ -556,6 +562,14 @@
       <span>547<span class="pc-show">字数</span></span>
     </span>
     
+    
+    
+    <span id="/post/arch-refind-bootloader-efi/" data-flag-title="Arch Linux切换rEFInd开机引导程序" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span>浏览量：<span class="leancloud-visitors-count"></span></span>
+    </span>
+    
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
@@ -614,7 +628,7 @@ cp -r /boot/EFI/systemd ~/systemd
   <ul class="post-copyright">
     <li class="post-copyright-author">
       <strong>本文作者：</strong>
-      适用 Gemini,Pisces 布局,版权说明需配置
+      impressionyang
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
@@ -654,7 +668,53 @@ cp -r /boot/EFI/systemd ~/systemd
   </div>
 </div>
             
-  
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('https://upimage.alexhchu.com/2020/04/21/47eda59424daa.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '9bGYviz3w1u6szxQMQKJ3Jt7-gzGzoHsz',
+    appKey: 'tmtw09Txojf9t5xd1DWlJ7jy',
+    avatar: '',
+    placeholder: '',
+    pageSize: '',
+    lang: 'zh-cn',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
+</script>
 
           </div>
         </div>
@@ -4714,6 +4774,8 @@ yay -S kcm-pointing-devices-git
   escapeMap.set('&quot;', '"');
   escapeMap.set('&amp;', '&');
 </script> -->
+
+<script src="/media/js/mouse/peace.js"></script>
 
 
 <script src=" /media/js/cool.js"></script>
