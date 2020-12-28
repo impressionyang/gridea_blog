@@ -1,279 +1,266 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gridea</title>
-<link rel="shortcut icon" href="https://impressionyang.vercel.app/favicon.ico?v=1605628453183">
-<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<link href="//at.alicdn.com/t/font_1806605_dyr0fqhe85.css" rel="stylesheet">
-<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://impressionyang.vercel.app/media/css/prism-1.css">
-<style>
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'charganolton';
-        src: url('https://impressionyang.vercel.app/media/fonts/Charganolton.ttf');
-    }
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.ttf') format('truetype');
-    }
+<html>
 
-    @font-face {
-        font-weight: bold;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.ttf') format('truetype');
-    }
-</style>
-<link rel="stylesheet" href="https://impressionyang.vercel.app/styles/main.css">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="欢迎访问[impressionyang的个人分享站]的个人博客">
+<meta name="author" content="kveln">
+<title>bash | impressionyang的个人分享站</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link
+  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+  rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="bash | impressionyang的个人分享站 » Feed"
+  href="https://impressionyang.vercel.app/atom.xml">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="https://impressionyang.vercel.app/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+
+<script>hljs.initHighlightingOnLoad();</script>
+
 </head>
-<body>
 
-<div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="https://impressionyang.vercel.app">
-                <img src="https://impressionyang.vercel.app/images/avatar.png?v=1605628453183" width="30" height="30"
-                     class="d-inline-block align-top"
-                     alt="">
-                Gridea
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/"
-                                
-                                >首页</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/archives"
-                                
-                                >归档</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/tags"
-                                
-                                >标签</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/post/about"
-                                
-                                >关于</a>
-                            </li>
-                        
-                    
-                </ul>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://impressionyang.vercel.app">impressionyang的个人分享站</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/post/about">关于</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1609169112283"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="masthead" style="background-image: url('https://impressionyang.gitee.io/imgbed/wallpaper/h2.svg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- 没Title为其他页面Header -->
+          
+            <!-- 其他页面（archives、tags、about...）Header -->
+            <div class="sub-site-heading">
+              <h1 class="tag-tl">#bash</h1>
             </div>
-        </div>
-    </nav>
-</div>
-<div id="content" class="container">
-        <div class="row">
-            <div class="col-sm-100 col-lg-9 index-post-list">
-                
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
+          
+        
+      </div>
+    </div>
+  </div>
+</header>
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
+            
             <a href="https://impressionyang.vercel.app/post/Linux_show_bilibili/">
+              <h2 class="post-title">
                 Linux显示bilibili小电视
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-02-19</time>
-            
-                <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag i-tag
-                                i-tag-other_3">
-                    #skill
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/2n4w7t_T0R3/" class="post-tag i-tag
-                                i-tag-">
-                    #shell
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/6O0jCiYjYWp/" class="post-tag i-tag
-                                i-tag-success">
-                    #bash
-                </a>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="linux控制台显示bilibili小电视">Linux控制台显示bilibili小电视</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="linux控制台显示bilibili小电视">Linux控制台显示bilibili小电视</h2>
 <ul>
 <li>不限制linux系统发行版、不限制shell</li>
 </ul>
 <h2 id="显示效果">显示效果</h2>
 <figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/Screenshot_20190826_223125.png" alt="Screenshot_20190826_223125" loading="lazy"></figure>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/Linux_show_bilibili/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-02-19</span>
+              <span>,</span>
+              <span class="post-stats">1 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-
-            </div>
-            <div class="col-lg-3">
-                
-<div class="id_card i-card">
-    <div class="id_card-avatar"
-         style="background-image: url(https://impressionyang.vercel.app/images/avatar.png?v=1605628453183)">
-    </div>
-    <h1 class="id_card-title">
-        Gridea
-    </h1>
-    <h2 class="id_card-description">
-        温故而知新
-    </h2>
-    <ul class="id_card-site-info row">
-        <li class="col-6"><a href="https://impressionyang.vercel.app/archives">文章</a></li>
-        <li class="col-6"><a href="https://impressionyang.vercel.app/tags">标签</a></li>
-        <li class="col-6"><a href="https://impressionyang.vercel.app/archives">38</a></li>
-        <li class="col-6"><a href="https://impressionyang.vercel.app/tags">37</a></li>
-    </ul>
-    <div class="id_card-sns">
-         
-        
-            <a href="https://github.com/impressionyang" target="_blank" title="github"><span
-                        class="vf-icons vf-icon-github"></span></a>
-        
-         
-        
-                <a href="https://impressionyang.vercel.app/atom.xml" target="_blank" title="RSS"><span class="vf-icons vf-icon-rss"></span></a>
-        
-    </div>
-</div>
-                
-    <div class="bulletin-board">
-        <div class="bulletin-board-title">
-            <span class="vf-icons vf-icon-laba" style="margin-right: 5px;color: #ed4014"></span>公告
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+          <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag">
+            skill
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/2n4w7t_T0R3/" class="post-tag">
+            shell
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/6O0jCiYjYWp/" class="post-tag">
+            bash
+          </a>
+          
         </div>
-        <div class="bulletin-board-content">
-            Just a littile test
+      </div>
+      </>
+      
+      <!-- 
+       -->
+    </div>
+  </div>
+</div>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+            <li class="list-inline-item">
+              <a href="https://github.com/impressionyang" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <!-- <li class="list-inline-item">
+              <a href="https://impressionyang.vercel.app/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li> -->
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>impressionyang的个人分享站</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
         </div>
+      </div>
     </div>
-
-                
-                    <div class="d-none d-lg-block shadow-sm" style="margin-top: 30px;background-color:#fff; border-radius: 10px;padding-top: 20px; text-align: center;">
-    <h5>标签 TOP20</h5>
-<div id="tags-chart"
-    style="height: 200px; width: 100%;">
-</div>
-</div>
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
-
-<script>
-    var temp = [{"name":"skill","value":23},{"name":"archlinux","value":7},{"name":"program","value":7},{"name":"C++","value":7},{"name":"hexo","value":5},{"name":"install","value":4},{"name":"C","value":4},{"name":"linux","value":4},{"name":"Qt","value":3},{"name":"Plasma","value":3},{"name":"tools","value":3},{"name":"beautify","value":2},{"name":"daily","value":2},{"name":"text","value":2},{"name":"markdown","value":2},{"name":"KDE","value":2},{"name":"plasma-applet","value":2},{"name":"rEFInd","value":1},{"name":"boot loader","value":1},{"name":"QFile","value":1}];
-    let tagsChart = echarts.init(document.getElementById('tags-chart'));
-    let tagsOption = {
-        title: {
-            text: '',
-            top: 0,
-            x: 'center'
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        series: [
-            {
-                name: 'tag',
-                type: 'pie',
-                radius: '50%',
-                color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: temp,
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
-    tagsChart.setOption(tagsOption);
-</script>
-                
-                
-                    <div class="site-stats-card shadow-sm">
-    <h6>访问统计</h6>
-    <div id="busuanzi_container_site_uv">
-        <span>本站访客数 : </span><span id="busuanzi_value_site_uv"></span>
-    </div>
-    <div id="busuanzi_container_site_pv">
-        <span>本站总访问量 : </span><span id="busuanzi_value_site_pv"></span>
-    </div>
-</div>
-                
-            </div>
-        </div>
-        <div class="site-footer">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | Theme <a href="//github.com/violetfreesia/gridea-theme-Violet" target="_blank">Violet</a>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-    <script src="https://impressionyang.vercel.app/media/js/main.js"></script>
-
-
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+    <div>
+      <center><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></center>
+      <script>
+          var now = new Date();
+          function createtime() {
+              var grt= new Date("02/18/2020 21:45:12");
+              now.setTime(now.getTime()+250);
+              days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+              hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+              if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+              mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+              seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+              snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+              document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+              document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+          }
+      setInterval("createtime()",250);
+      </script>
+      </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  
 </body>
+
 </html>

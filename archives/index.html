@@ -1,581 +1,645 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gridea</title>
-<link rel="shortcut icon" href="https://impressionyang.vercel.app/favicon.ico?v=1605628453183">
-<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<link href="//at.alicdn.com/t/font_1806605_dyr0fqhe85.css" rel="stylesheet">
-<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://impressionyang.vercel.app/media/css/prism-1.css">
-<style>
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'charganolton';
-        src: url('https://impressionyang.vercel.app/media/fonts/Charganolton.ttf');
-    }
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.ttf') format('truetype');
-    }
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="欢迎访问[impressionyang的个人分享站]的个人博客">
+<meta name="author" content="kveln">
+<title>归档 | impressionyang的个人分享站</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link
+  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+  rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="归档 | impressionyang的个人分享站 » Feed"
+  href="https://impressionyang.vercel.app/atom.xml">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="https://impressionyang.vercel.app/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
-    @font-face {
-        font-weight: bold;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.ttf') format('truetype');
-    }
-</style>
-<link rel="stylesheet" href="https://impressionyang.vercel.app/styles/main.css">
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 </head>
+
 <body>
-
-<div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="https://impressionyang.vercel.app">
-                <img src="https://impressionyang.vercel.app/images/avatar.png?v=1605628453183" width="30" height="30"
-                     class="d-inline-block align-top"
-                     alt="">
-                Gridea
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/"
-                                
-                                >首页</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/archives"
-                                
-                                >归档</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/tags"
-                                
-                                >标签</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/post/about"
-                                
-                                >关于</a>
-                            </li>
-                        
-                    
-                </ul>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://impressionyang.vercel.app">impressionyang的个人分享站</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/post/about">关于</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1609169112283"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="masthead" style="background-image: url('https://impressionyang.gitee.io/imgbed/wallpaper/h2.svg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- 没Title为其他页面Header -->
+          
+            <!-- 其他页面（archives、tags、about...）Header -->
+            <div class="sub-site-heading">
+              <h1 class="tag-tl">Archives</h1>
             </div>
+          
+        
+      </div>
+    </div>
+  </div>
+</header>
+  <!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      
+      
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-archives">
+          <h2 class="year">2020</h2>
+          
+          
+          <a href="https://impressionyang.vercel.app/post/picocom-dialy-use/" class="post">
+            <h2 class="post-title Archives">
+              使用picocm来进行Linux下的串口调试
+            </h2>
+            <div class="time post-meta">2020-09-17</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/" class="post">
+            <h2 class="post-title Archives">
+              Linux下在文件夹所有文件中查找相关内容
+            </h2>
+            <div class="time post-meta">2020-08-22</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/compress-file-extract-and-compress/" class="post">
+            <h2 class="post-title Archives">
+              Linux解压缩文件
+            </h2>
+            <div class="time post-meta">2020-08-11</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/pointer-level2-as-handle/" class="post">
+            <h2 class="post-title Archives">
+              C语言二级指针用法之模拟句柄用途
+            </h2>
+            <div class="time post-meta">2020-08-11</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/add-canvas-clock-in-pugjs/" class="post">
+            <h2 class="post-title Archives">
+              给pugjs的stun主题添加canvas时钟
+            </h2>
+            <div class="time post-meta">2020-08-07</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/the-blog-is-put-on-record/" class="post">
+            <h2 class="post-title Archives">
+              最近网站备案中。。。
+            </h2>
+            <div class="time post-meta">2020-04-21</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/arch-refind-bootloader-efi/" class="post">
+            <h2 class="post-title Archives">
+              Arch Linux切换rEFInd开机引导程序
+            </h2>
+            <div class="time post-meta">2020-03-30</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/qt-qfile-note/" class="post">
+            <h2 class="post-title Archives">
+              Qt文件操作QFile
+            </h2>
+            <div class="time post-meta">2020-03-29</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/qt-udp-brocast/" class="post">
+            <h2 class="post-title Archives">
+              Qt UDP广播
+            </h2>
+            <div class="time post-meta">2020-03-28</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/" class="post">
+            <h2 class="post-title Archives">
+              为主题用pugjs编写的hexo博客添加网站运行时间
+            </h2>
+            <div class="time post-meta">2020-03-27</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/archlinux-install-3/" class="post">
+            <h2 class="post-title Archives">
+              archlinux安装篇（三） KDE配套小工具
+            </h2>
+            <div class="time post-meta">2020-03-26</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/markdown-note-mermaid/" class="post">
+            <h2 class="post-title Archives">
+              Markdown的时序图、流程图、和甘特图+Hexo的相关配置
+            </h2>
+            <div class="time post-meta">2020-03-21</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/hexo-broken-fix-note01/" class="post">
+            <h2 class="post-title Archives">
+              记录一次Hexo的崩溃修复
+            </h2>
+            <div class="time post-meta">2020-03-20</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/fcitx5-install-note/" class="post">
+            <h2 class="post-title Archives">
+              记一次Fcitx5的安装
+            </h2>
+            <div class="time post-meta">2020-03-20</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/cpp-java-variable-diff/" class="post">
+            <h2 class="post-title Archives">
+              C++和Java的变量对比
+            </h2>
+            <div class="time post-meta">2020-03-20</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/kde-wallet-login-config/" class="post">
+            <h2 class="post-title Archives">
+              解决KDE下KDE Wallet重装系统后每次登陆需要输入密码
+            </h2>
+            <div class="time post-meta">2020-03-15</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/hexo-init-config-1/" class="post">
+            <h2 class="post-title Archives">
+              Hexo + Git Pages搭建个人博客（一）
+            </h2>
+            <div class="time post-meta">2020-03-09</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/unity-style-applet/" class="post">
+            <h2 class="post-title Archives">
+              KDE下完美的Unity桌面体验，扔掉active window control
+            </h2>
+            <div class="time post-meta">2020-02-29</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/auto-init-cmake-qt-project/" class="post">
+            <h2 class="post-title Archives">
+              Qt CMake GUI项目生成脚本
+            </h2>
+            <div class="time post-meta">2020-02-27</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/console-beautify-config/" class="post">
+            <h2 class="post-title Archives">
+              终端shell美化
+            </h2>
+            <div class="time post-meta">2020-02-25</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/goldendict-personal-config/" class="post">
+            <h2 class="post-title Archives">
+              GoldenDict个人配置
+            </h2>
+            <div class="time post-meta">2020-02-25</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/markdown-math-support/" class="post">
+            <h2 class="post-title Archives">
+              markdown数学公式
+            </h2>
+            <div class="time post-meta">2020-02-25</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/Makefile_personal_config/" class="post">
+            <h2 class="post-title Archives">
+              Makfile文件的编写
+            </h2>
+            <div class="time post-meta">2020-02-24</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/cmake-personal-config/" class="post">
+            <h2 class="post-title Archives">
+              CMake编写总结
+            </h2>
+            <div class="time post-meta">2020-02-23</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/archlinux-install_2/" class="post">
+            <h2 class="post-title Archives">
+              archlinux安装篇（二） KDE桌面环境
+            </h2>
+            <div class="time post-meta">2020-02-22</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/C-CPP-Tools-Collect/" class="post">
+            <h2 class="post-title Archives">
+              盘点C/C++语言编程+编译工具
+            </h2>
+            <div class="time post-meta">2020-02-21</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/active_window_control/" class="post">
+            <h2 class="post-title Archives">
+              Plasma顶栏和窗口标题整合插件
+            </h2>
+            <div class="time post-meta">2020-02-20</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/restart_kde/" class="post">
+            <h2 class="post-title Archives">
+              一个命令进行Plasma热重启
+            </h2>
+            <div class="time post-meta">2020-02-20</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/wine_deepinwine_config/" class="post">
+            <h2 class="post-title Archives">
+              wine和deepinwine的相关配置
+            </h2>
+            <div class="time post-meta">2020-02-20</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/USB_boot_multi_use/" class="post">
+            <h2 class="post-title Archives">
+              archlinux安装与应急使用双用U盘
+            </h2>
+            <div class="time post-meta">2020-02-20</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/arch_sierial_bumblebee_install/" class="post">
+            <h2 class="post-title Archives">
+              arch系的bumblebee安装
+            </h2>
+            <div class="time post-meta">2020-02-19</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/Linux_show_bilibili/" class="post">
+            <h2 class="post-title Archives">
+              Linux显示bilibili小电视
+            </h2>
+            <div class="time post-meta">2020-02-19</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/archlinux_asciiview/" class="post">
+            <h2 class="post-title Archives">
+              archlinux生成字符图片
+            </h2>
+            <div class="time post-meta">2020-02-19</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/git_use_guid/" class="post">
+            <h2 class="post-title Archives">
+              git使用要点
+            </h2>
+            <div class="time post-meta">2020-02-19</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/archlinux_install_1/" class="post">
+            <h2 class="post-title Archives">
+              archlinux安装篇（一） 基本系统
+            </h2>
+            <div class="time post-meta">2020-02-19</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/manjaro-install-config/" class="post">
+            <h2 class="post-title Archives">
+              MANJARO KDE安装配置(已换Arch Linux，此贴可能废弃)
+            </h2>
+            <div class="time post-meta">2020-02-18</div>
+          </a>
+          
+                    
+          
+          <a href="https://impressionyang.vercel.app/post/first-begin/" class="post">
+            <h2 class="post-title Archives">
+              置顶公告
+            </h2>
+            <div class="time post-meta">2020-02-18</div>
+          </a>
+          
+                    
+          
+                    
         </div>
-    </nav>
-</div>
-<div id="content" class="container">
-    
-
-<div class="archives-container main-container">
-    <ul class="timeline">
-        
-            <li>
-                <h3 class="year">
-                    2020
-                </h3>
-                <ul class="year-wrapper">
+      </div>
+      
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-archives">
+          <h2 class="year">2018</h2>
+          
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-09-17</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/picocom-dialy-use/">
-                                    <span>使用picocm来进行Linux下的串口调试</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-08-22</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/">
-                                    <span>Linux下在文件夹所有文件中查找相关内容</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-08-11</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/compress-file-extract-and-compress/">
-                                    <span>Linux解压缩文件</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-08-11</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/pointer-level2-as-handle/">
-                                    <span>C语言二级指针用法之模拟句柄用途</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-08-07</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/add-canvas-clock-in-pugjs/">
-                                    <span>给pugjs的stun主题添加canvas时钟</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-04-21</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/the-blog-is-put-on-record/">
-                                    <span>最近网站备案中。。。</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-30</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/arch-refind-bootloader-efi/">
-                                    <span>Arch Linux切换rEFInd开机引导程序</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-29</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/qt-qfile-note/">
-                                    <span>Qt文件操作QFile</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-28</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/qt-udp-brocast/">
-                                    <span>Qt UDP广播</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-27</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/">
-                                    <span>为主题用pugjs编写的hexo博客添加网站运行时间</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-26</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/archlinux-install-3/">
-                                    <span>archlinux安装篇（三） KDE配套小工具</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-21</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/markdown-note-mermaid/">
-                                    <span>Markdown的时序图、流程图、和甘特图+Hexo的相关配置</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-20</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/hexo-broken-fix-note01/">
-                                    <span>记录一次Hexo的崩溃修复</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-20</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/fcitx5-install-note/">
-                                    <span>记一次Fcitx5的安装</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-20</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/cpp-java-variable-diff/">
-                                    <span>C++和Java的变量对比</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-15</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/kde-wallet-login-config/">
-                                    <span>解决KDE下KDE Wallet重装系统后每次登陆需要输入密码</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-03-09</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/hexo-init-config-1/">
-                                    <span>Hexo + Git Pages搭建个人博客（一）</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-29</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/unity-style-applet/">
-                                    <span>KDE下完美的Unity桌面体验，扔掉active window control</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-27</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/auto-init-cmake-qt-project/">
-                                    <span>Qt CMake GUI项目生成脚本</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-25</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/console-beautify-config/">
-                                    <span>终端shell美化</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-25</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/goldendict-personal-config/">
-                                    <span>GoldenDict个人配置</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-25</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/markdown-math-support/">
-                                    <span>markdown数学公式</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-24</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/Makefile_personal_config/">
-                                    <span>Makfile文件的编写</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-23</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/cmake-personal-config/">
-                                    <span>CMake编写总结</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-22</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/archlinux-install_2/">
-                                    <span>archlinux安装篇（二） KDE桌面环境</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-21</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/C-CPP-Tools-Collect/">
-                                    <span>盘点C/C++语言编程+编译工具</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-20</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/active_window_control/">
-                                    <span>Plasma顶栏和窗口标题整合插件</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-20</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/restart_kde/">
-                                    <span>一个命令进行Plasma热重启</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-20</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/wine_deepinwine_config/">
-                                    <span>wine和deepinwine的相关配置</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-20</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/USB_boot_multi_use/">
-                                    <span>archlinux安装与应急使用双用U盘</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-19</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/arch_sierial_bumblebee_install/">
-                                    <span>arch系的bumblebee安装</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-19</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/Linux_show_bilibili/">
-                                    <span>Linux显示bilibili小电视</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-19</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/archlinux_asciiview/">
-                                    <span>archlinux生成字符图片</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-19</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/git_use_guid/">
-                                    <span>git使用要点</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-19</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/archlinux_install_1/">
-                                    <span>archlinux安装篇（一） 基本系统</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-18</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/manjaro-install-config/">
-                                    <span>MANJARO KDE安装配置(已换Arch Linux，此贴可能废弃)</span>
-                                </a>
-                            </li>
-                        
+          
                     
-                        
-                            <li>
-                                <span class="date">2020-02-18</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/first-begin/">
-                                    <span>置顶公告</span>
-                                </a>
-                            </li>
-                        
+          
+          <a href="https://impressionyang.vercel.app/post/hello-gridea/" class="post">
+            <h2 class="post-title Archives">
+              Hello Gridea
+            </h2>
+            <div class="time post-meta">2018-12-12</div>
+          </a>
+          
                     
-                        
-                    
-                </ul>
-
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+            <li class="list-inline-item">
+              <a href="https://github.com/impressionyang" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
             </li>
-        
-            <li>
-                <h3 class="year">
-                    2018
-                </h3>
-                <ul class="year-wrapper">
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                            <li>
-                                <span class="date">2018-12-12</span>
-                                <a class="title" href="https://impressionyang.vercel.app/post/hello-gridea/">
-                                    <span>Hello Gridea</span>
-                                </a>
-                            </li>
-                        
-                    
-                </ul>
-
-            </li>
-        
-    </ul>
-</div>
-    
-    <div class="site-footer">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | Theme <a href="//github.com/violetfreesia/gridea-theme-Violet" target="_blank">Violet</a>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-    <script src="https://impressionyang.vercel.app/media/js/main.js"></script>
-
-
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <!-- <li class="list-inline-item">
+              <a href="https://impressionyang.vercel.app/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li> -->
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>impressionyang的个人分享站</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <center><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></center>
+      <script>
+          var now = new Date();
+          function createtime() {
+              var grt= new Date("02/18/2020 21:45:12");
+              now.setTime(now.getTime()+250);
+              days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+              hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+              if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+              mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+              seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+              snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+              document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+              document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+          }
+      setInterval("createtime()",250);
+      </script>
+      </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  
 </body>
+
 </html>

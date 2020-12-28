@@ -1,128 +1,176 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gridea</title>
-<link rel="shortcut icon" href="https://impressionyang.vercel.app/favicon.ico?v=1605628453183">
-<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<link href="//at.alicdn.com/t/font_1806605_dyr0fqhe85.css" rel="stylesheet">
-<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://impressionyang.vercel.app/media/css/prism-1.css">
-<style>
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'charganolton';
-        src: url('https://impressionyang.vercel.app/media/fonts/Charganolton.ttf');
-    }
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.ttf') format('truetype');
-    }
+<html>
 
-    @font-face {
-        font-weight: bold;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.ttf') format('truetype');
-    }
-</style>
-<link rel="stylesheet" href="https://impressionyang.vercel.app/styles/main.css">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="欢迎访问[impressionyang的个人分享站]的个人博客">
+<meta name="author" content="kveln">
+<title>使用picocm来进行Linux下的串口调试 | impressionyang的个人分享站</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link
+  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+  rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="使用picocm来进行Linux下的串口调试 | impressionyang的个人分享站 » Feed"
+  href="https://impressionyang.vercel.app/atom.xml">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="https://impressionyang.vercel.app/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    
-        <style>
-            pre code {
-                background-color: transparent !important;
-            }
-        </style>
-    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+  <meta property="og:description" content="使用picocm来进行Linux下的串口调试" />
+  <meta property="og:url" content="https://impressionyang.vercel.app/post/picocom-dialy-use/" />
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="impressionyang的个人分享站" />
+  <!-- <script src="../assets/styles/scripts/tocScript.js"></script> -->
 </head>
-<body>
 
-<div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="https://impressionyang.vercel.app">
-                <img src="https://impressionyang.vercel.app/images/avatar.png?v=1605628453183" width="30" height="30"
-                     class="d-inline-block align-top"
-                     alt="">
-                Gridea
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/"
-                                
-                                >首页</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/archives"
-                                
-                                >归档</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/tags"
-                                
-                                >标签</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/post/about"
-                                
-                                >关于</a>
-                            </li>
-                        
-                    
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-<div id="content" class="container">
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://impressionyang.vercel.app">impressionyang的个人分享站</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/post/about">关于</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1609169112283"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Page Header -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://impressionyang.vercel.app">impressionyang的个人分享站</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/post/about">关于</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1609169112283"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="masthead" style="background-image: url('https://impressionyang.gitee.io/imgbed/wallpaper/h2.svg')">
+  <div class="overlay"></div>
+  <div class="container">
     <div class="row">
-        <div class="col-sm-100 col-lg-9">
-            <div class="shadow-sm post-detail">
-                <article class="post i-card">
-                    <h2 class="post-title">
-                        使用picocm来进行Linux下的串口调试
-                    </h2>
-                    <div class="post-info">
-                        <time class="post-time">2020-09-17</time>
-                        
-                    </div>
-                    
-                    <div class="post-content">
-                        <h2 id="先导">先导</h2>
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- 没Title为其他页面Header -->
+          
+            <!-- 没Title并且有headerType为Post：文章Header -->
+            <div class="post-heading">
+              <span class="tags">
+                
+              </span>
+              <h1>使用picocm来进行Linux下的串口调试</h1>
+              <span class="meta">
+                Posted on
+                2020-09-17，3 min read
+              </span>
+            </div>
+          
+        
+      </div>
+    </div>
+  </div>
+</header>
+  <!-- Post Content -->
+  <article id="post-content-article">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto post-content-container">
+          
+          <h2 id="先导">先导</h2>
 <blockquote>
 <p>为什么不用<code>minicom</code>呢？功能又强大由好用不是。主要原因就是<code>minicom</code>没有彩色文字，看着难受，特别是调试<code>ARM Linux</code>的时候233</p>
 </blockquote>
@@ -170,34 +218,7 @@
 <center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
 <center>impressionyang</center>
 
-                    </div>
-                </article>
-            </div>
-            <div class="row">
-                <div class="next-post col-6">
-                    
-                </div>
-                <div class="next-post col-6">
-                    
-                        <div class="next">下一篇</div>
-                        <a href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/">
-                            <h3 class="post-title">
-                                Linux下在文件夹所有文件中查找相关内容
-                            </h3>
-                        </a>
-                    
-                </div>
-            </div>
-            
-                <div id="valinecomments"></div>
-            
-        </div>
-        <div class="d-none d-lg-block col-lg-3">
-            
-                <div class="toc-card i-card shadow-sm sticky-top">
-    <div class="toc-title i-card-title">目录</div>
-    <div class="toc-content">
-        <ul class="markdownIt-TOC">
+          <div class="toc-container"><ul class="markdownIt-TOC">
 <li>
 <ul>
 <li><a href="#%E5%85%88%E5%AF%BC">先导</a></li>
@@ -215,87 +236,158 @@
 </ul>
 </li>
 </ul>
-
-    </div>
-    <script>
-        function locateCatelogList() {
-            /*获取文章目录集合,可通过:header过滤器*/
-            var alis = $('.post-content :header');
-            /*获取侧边栏目录列表集合**/
-            var sidebar_alis = $('.markdownIt-TOC a');
-            /*获取滚动条到顶部的距离*/
-            var scroll_height = $(window).scrollTop();
-            for (var i = 0; i < alis.length; i++) {
-                /*获取锚点集合中的元素分别到顶点的距离*/
-                var a_height = $(alis[i]).offset().top-150;
-                if (a_height < scroll_height) {
-                    /*高亮显示*/
-                    sidebar_alis.removeClass('on');
-                    $(sidebar_alis[i]).addClass('on');
-                }
-            }
-        }
-
-        $(function () {
-            /*绑定滚动事件 */
-            $(window).bind('scroll', locateCatelogList);
-        });
-    </script>
 </div>
+          
+          <hr />
+          <p class="next-post">下一篇：
+            <a href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/">
+              <span class="post-title">
+                Linux下在文件夹所有文件中查找相关内容&rarr;
+              </span>
+            </a>
+          </p>
+          
+          <div class="comment" style="text-align: center;">
+            
+            <span id="/post/picocom-dialy-use/" class="leancloud_visitors"
+              data-flag-title="使用picocm来进行Linux下的串口调试">
+              <em class="post-meta-item-text">阅读量 </em>
+              <i class="leancloud-visitors-count">loading...</i>
+            </span>
+            
 
             
-        </div>
-    </div>
-    <div class="site-footer">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | Theme <a href="//github.com/violetfreesia/gridea-theme-Violet" target="_blank">Violet</a>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+            
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
 
-    <script src="https://impressionyang.vercel.app/media/js/main.js"></script>
-
-
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1200px;
+		padding: 2.5%
+	}
+</style>
 
 
+	<div id="vcomments"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-    <script>
-    new Valine({
-        el: '#valinecomments',
-        appId: '9bGYviz3w1u6szxQMQKJ3Jt7-gzGzoHsz',
-        appKey: 'tmtw09Txojf9t5xd1DWlJ7jy',
-        placeholder: '畅所欲言吧,可以留下联系方式哦~',
-        pageSize: 10,
-        lang: 'zh-CN',
-        
-        
-        requiredFields: []
-    })
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '9bGYviz3w1u6szxQMQKJ3Jt7-gzGzoHsz',
+		appKey: 'tmtw09Txojf9t5xd1DWlJ7jy',
+		avatar: 'robohash',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'comment it',
+		visitor: true,
+	});
 </script>
-    <script>
-        $('#valinecomments .vpower').remove();
-    </script>
 
-
-    <script>
-        $('pre').addClass('line-numbers')
-    </script>
-
+            
+          </div>
+        </div>
+      </div>
+  </article>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+            <li class="list-inline-item">
+              <a href="https://github.com/impressionyang" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <!-- <li class="list-inline-item">
+              <a href="https://impressionyang.vercel.app/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li> -->
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>impressionyang的个人分享站</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <center><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></center>
+      <script>
+          var now = new Date();
+          function createtime() {
+              var grt= new Date("02/18/2020 21:45:12");
+              now.setTime(now.getTime()+250);
+              days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+              hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+              if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+              mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+              seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+              snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+              document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+              document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+          }
+      setInterval("createtime()",250);
+      </script>
+      </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  
+  <script src="https://impressionyang.vercel.app/media/scripts/tocScript.js"></script>
 </body>
+
 </html>

@@ -1,126 +1,126 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gridea</title>
-<link rel="shortcut icon" href="https://impressionyang.vercel.app/favicon.ico?v=1605628453183">
-<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<link href="//at.alicdn.com/t/font_1806605_dyr0fqhe85.css" rel="stylesheet">
-<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://impressionyang.vercel.app/media/css/prism-1.css">
-<style>
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'charganolton';
-        src: url('https://impressionyang.vercel.app/media/fonts/Charganolton.ttf');
-    }
-    @font-face {
-        font-weight: normal;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Regular.ttf') format('truetype');
-    }
 
-    @font-face {
-        font-weight: bold;
-        font-style: normal;
-        font-family: 'JetBrainsMono';
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot');
-        src: url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.eot?#iefix') format('embedded-opentype'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff2') format('woff2'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.woff') format('woff'),
-        url('https://impressionyang.vercel.app/media/fonts/JetBrainsMono-Bold.ttf') format('truetype');
-    }
-</style>
-<link rel="stylesheet" href="https://impressionyang.vercel.app/styles/main.css">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="欢迎访问[impressionyang的个人分享站]的个人博客">
+<meta name="author" content="kveln">
+<title>impressionyang的个人分享站</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link
+  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+  rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="impressionyang的个人分享站 » Feed"
+  href="https://impressionyang.vercel.app/atom.xml">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="https://impressionyang.vercel.app/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+
+<script>hljs.initHighlightingOnLoad();</script>
+
 </head>
-<body>
 
-<div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="https://impressionyang.vercel.app">
-                <img src="https://impressionyang.vercel.app/images/avatar.png?v=1605628453183" width="30" height="30"
-                     class="d-inline-block align-top"
-                     alt="">
-                Gridea
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/"
-                                
-                                >首页</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/archives"
-                                
-                                >归档</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/tags"
-                                
-                                >标签</a>
-                            </li>
-                        
-                    
-                        
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/post/about"
-                                
-                                >关于</a>
-                            </li>
-                        
-                    
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-<div id="content" class="container">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://impressionyang.vercel.app">impressionyang的个人分享站</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/post/about">关于</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1609169112283"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="masthead" style="background-image: url('https://impressionyang.gitee.io/imgbed/wallpaper/h2.svg')">
+  <div class="overlay"></div>
+  <div class="container">
     <div class="row">
-        <div class="col-sm-100 col-lg-9 index-post-list">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- 首页Header -->
+          <div class="site-heading">
+            <img class="user-avatar" src="/images/avatar.png" alt="头像">
+            <h1>impressionyang的个人分享站</h1>
+            <span class="subheading">looooooooooooooove coooooooooooooding</span>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</header>
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
             
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
             <a href="https://impressionyang.vercel.app/post/picocom-dialy-use/">
+              <h2 class="post-title">
                 使用picocm来进行Linux下的串口调试
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-09-17</time>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <blockquote>
 <p>为什么不用<code>minicom</code>呢？功能又强大由好用不是。主要原因就是<code>minicom</code>没有彩色文字，看着难受，特别是调试<code>ARM Linux</code>的时候233</p>
 </blockquote>
@@ -129,59 +129,83 @@
 <pre><code class="language-shell">sudo apt install picocom -y
 </code></pre>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/picocom-dialy-use/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-09-17</span>
+              <span>,</span>
+              <span class="post-stats">3 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
-            <a href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/">
-                Linux下在文件夹所有文件中查找相关内容
-            </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-08-22</time>
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
             
+            <a href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/">
+              <h2 class="post-title">
+                Linux下在文件夹所有文件中查找相关内容
+              </h2>
+            </a>
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <blockquote>
 <p>本文是为了记录在编程中进行一些在文件夹中查找某些关键字进行配置时查找文件过于麻烦的解决办法<br>
 在Linux开发中使用一些命令或者命令的配合进行查找文件内容及匹配关键词还是比较方便的。</p>
 </blockquote>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/search-content-in-files-of-dir/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-08-22</span>
+              <span>,</span>
+              <span class="post-stats">3 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
-            <a href="https://impressionyang.vercel.app/post/compress-file-extract-and-compress/">
-                Linux解压缩文件
-            </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-08-11</time>
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
             
+            <a href="https://impressionyang.vercel.app/post/compress-file-extract-and-compress/">
+              <h2 class="post-title">
+                Linux解压缩文件
+              </h2>
+            </a>
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <blockquote>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <blockquote>
 <p>先导：写这篇文章是为了记录在Linux下常用的、简单的进行压缩文件的解压缩以及打包压缩文件的方法，以方便自己未来忘记了在查询</p>
 </blockquote>
 <h2 id="全局说明">全局说明</h2>
@@ -191,30 +215,42 @@
 <li><code>src</code>：来源文件，是一个文件或者一个文件夹，压缩要想打包多个就空格后追加接下来的文件或者文件夹，解压的就不行了</li>
 </ul>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/compress-file-extract-and-compress/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-08-11</span>
+              <span>,</span>
+              <span class="post-stats">3 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
-            <a href="https://impressionyang.vercel.app/post/pointer-level2-as-handle/">
-                C语言二级指针用法之模拟句柄用途
-            </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-08-11</time>
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
             
+            <a href="https://impressionyang.vercel.app/post/pointer-level2-as-handle/">
+              <h2 class="post-title">
+                C语言二级指针用法之模拟句柄用途
+              </h2>
+            </a>
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <blockquote>
 <p>因为在学习中使用到了二级指针进行操作，故而作此总结</p>
 </blockquote>
@@ -236,226 +272,258 @@ Windows之所以要设立句柄，根本上源于内存管理机制的问题，�
 <p>A(即B的地址)是指向指针的指针，称为二级指针，用于存放二级指针的变量称为二级指针变量．根据B的不同情况，二级指针又分为指向指针变量的指针和指向数组的指针。</p>
 </blockquote>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/pointer-level2-as-handle/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-08-11</span>
+              <span>,</span>
+              <span class="post-stats">7 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
+            
             <a href="https://impressionyang.vercel.app/post/add-canvas-clock-in-pugjs/">
+              <h2 class="post-title">
                 给pugjs的stun主题添加canvas时钟
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-08-07</time>
-            
-                <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag i-tag
-                                i-tag-other_4">
-                    #skill
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/S9URHn2gW5/" class="post-tag i-tag
-                                i-tag-other_3">
-                    #hexo
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/snVfaGhPmT/" class="post-tag i-tag
-                                i-tag-success">
-                    #beautify
-                </a>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <p>首先隔了这么久才继续进行更新的原因是网站备案和毕业设计，加上刚入职没有时间去进行内容更新，以后会继续更新了</p>
 <p>在pugjs中添加一些好用的东西这个系列会长期的添加更新，因为这些都是会用在博客当中的，而且这些操作都比较简单，都是在主题的相应文件位置添加相应代码即可。</p>
 <h2 id="内容介绍">内容介绍</h2>
 <p>这次添加的内容是在右边栏那里加上一个时钟，用来给阅读的人直观地看到时间，时钟的代码是直接从网上拷贝下来的，并且自己做了修改，地址是<a href="https://www.helloweba.net/demo/html5clock/">这里</a>,打开这个链接就能看到一个时钟，此时检查页面元素定位到时钟所在的div标签，其中有一个canvas标签，将其复制下来，并且找到下面与之最近的script标签查看到时钟的逻辑代码，也将其复制下来进行修改后就差不多可以使用了。</p>
 <p><strong>首先声明，代码是直接复制的，复制也没有删除，主要是为了学习用途，如果造成侵权或者修改了不应修改的地方，还请拿出版权证据证明后修改或者删除您的代码，自行复制后造成的一切问题与我无关</strong></p>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/add-canvas-clock-in-pugjs/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-08-07</span>
+              <span>,</span>
+              <span class="post-stats">8 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+          <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag">
+            skill
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/S9URHn2gW5/" class="post-tag">
+            hexo
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/snVfaGhPmT/" class="post-tag">
+            beautify
+          </a>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
+            
             <a href="https://impressionyang.vercel.app/post/the-blog-is-put-on-record/">
+              <h2 class="post-title">
                 最近网站备案中。。。
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-04-21</time>
-            
-                <a href="https://impressionyang.vercel.app/tag/3xpig7zCN2/" class="post-tag i-tag
-                                i-tag-other_4">
-                    #daily
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/AVLB6TXIvp/" class="post-tag i-tag
-                                i-tag-warning">
-                    #text
-                </a>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="说明">说明</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="说明">说明</h2>
 <blockquote>
 <p>打算是主要打理国内的空间，当然github也会同步发布，是所以使用未备案的域名感觉还是挺不妥当的，还是备案一下，但是我万万没想到的是备案有那么多需要注意的问题</p>
 </blockquote>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/the-blog-is-put-on-record/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-04-21</span>
+              <span>,</span>
+              <span class="post-stats">2 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+          <a href="https://impressionyang.vercel.app/tag/3xpig7zCN2/" class="post-tag">
+            daily
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/AVLB6TXIvp/" class="post-tag">
+            text
+          </a>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
+            
             <a href="https://impressionyang.vercel.app/post/arch-refind-bootloader-efi/">
+              <h2 class="post-title">
                 Arch Linux切换rEFInd开机引导程序
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-03-30</time>
-            
-                <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag i-tag
-                                i-tag-">
-                    #skill
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/cSofC0ufLg/" class="post-tag i-tag
-                                i-tag-warning">
-                    #archlinux
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/we3vScETUV/" class="post-tag i-tag
-                                i-tag-other_2">
-                    #rEFInd
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/Kj6IoL6xCP/" class="post-tag i-tag
-                                i-tag-banana">
-                    #boot loader
-                </a>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <p>以下<code>rEFInd</code>的<code>arckwiki</code>词条的内容：</p>
 <blockquote>
 <p>rEFInd 是一个 UEFI 启动管理器。它是 rEFIt （不再维护）的一个分支并且针对非 Mac 硬件修复了若干问题。它被设计为平台无关，可启动多个操作系统。</p>
 </blockquote>
 <p>使用<code>rEFInd</code>的需求是我原来使用的是<code>bootctl</code>这个启动引导程序,虽然简单好用,但是只有黑白界面难免有点单调,所以就想使用一个比较漂亮的但是文件结构又简洁的<code>bootloader</code>,所以<code>grub</code>就被丢弃了,虽然它的却很强大,但是文件结构有点复杂,配置影响因素有点多</p>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/arch-refind-bootloader-efi/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-03-30</span>
+              <span>,</span>
+              <span class="post-stats">3 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+          <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag">
+            skill
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/cSofC0ufLg/" class="post-tag">
+            archlinux
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/we3vScETUV/" class="post-tag">
+            rEFInd
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/Kj6IoL6xCP/" class="post-tag">
+            boot loader
+          </a>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
+            
             <a href="https://impressionyang.vercel.app/post/qt-qfile-note/">
+              <h2 class="post-title">
                 Qt文件操作QFile
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-03-29</time>
-            
-                <a href="https://impressionyang.vercel.app/tag/TcZ08mUBsR/" class="post-tag i-tag
-                                i-tag-other_3">
-                    #program
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/ETMOZ54MMP/" class="post-tag i-tag
-                                i-tag-other_2">
-                    #C++
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/4SaIVj4t_m/" class="post-tag i-tag
-                                i-tag-other_2">
-                    #Qt
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/2Wr5Rqt5le/" class="post-tag i-tag
-                                i-tag-other_4">
-                    #QFile
-                </a>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <blockquote>
 <p>因为有需求使用<code>Qt</code>的文件<code>I/O</code>操作,所以做此记录以供后用</p>
 </blockquote>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/qt-qfile-note/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-03-29</span>
+              <span>,</span>
+              <span class="post-stats">3 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+          <a href="https://impressionyang.vercel.app/tag/TcZ08mUBsR/" class="post-tag">
+            program
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/ETMOZ54MMP/" class="post-tag">
+            C++
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/4SaIVj4t_m/" class="post-tag">
+            Qt
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/2Wr5Rqt5le/" class="post-tag">
+            QFile
+          </a>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
+            
             <a href="https://impressionyang.vercel.app/post/qt-udp-brocast/">
+              <h2 class="post-title">
                 Qt UDP广播
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-03-28</time>
-            
-                <a href="https://impressionyang.vercel.app/tag/TcZ08mUBsR/" class="post-tag i-tag
-                                i-tag-other_3">
-                    #program
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/ETMOZ54MMP/" class="post-tag i-tag
-                                i-tag-other_3">
-                    #C++
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/4SaIVj4t_m/" class="post-tag i-tag
-                                i-tag-other_1">
-                    #Qt
-                </a>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <blockquote>
 <p>最近有使用<code>QT</code>的<code>UDP</code>广播,所以记录这篇帖子记录一下</p>
 </blockquote>
@@ -463,188 +531,234 @@ Windows之所以要设立句柄，根本上源于内存管理机制的问题，�
 <p>什么是<code>UDP</code>广播,我就不搬百科的内容了,就按照我的一点理解来说吧</p>
 <p><code>UDP</code>是一种网络进程间通信的技术,一般和<code>TCP</code>一起出现,<code>UDP</code>的通信优势是速度快、不需要确定对方<code>IP</code>地址，但是缺点是连接不可靠。而<code>UDP</code>广播是<code>UDP</code>下的一种通讯手段，他作为广播发送端（使用<code>writeDatagram()</code>方法）时可以在当前网络下的广播地址中进行发送广播信息，而任何接收端(使用<code>readDatagram()</code>方法)都能接收到服务器<strong>当前发送</strong>的广播信息</p>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/qt-udp-brocast/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-03-28</span>
+              <span>,</span>
+              <span class="post-stats">2 min read</span>
+            </p>
+          </div>
+          
         </div>
-    </div>
-    
-</article>
-
-<article class="post-item row">
-    
-    <div class="post-desc col-sm-12 ">
-        <h2 class="post-title">
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+          <a href="https://impressionyang.vercel.app/tag/TcZ08mUBsR/" class="post-tag">
+            program
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/ETMOZ54MMP/" class="post-tag">
+            C++
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/4SaIVj4t_m/" class="post-tag">
+            Qt
+          </a>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 每行的总容器 -->
+      <div class="post-row-container">
+        <!-- 第0层；标题 -->
+        <div class="title-floor">
+          <div class="post-title-container">
+            
             <a href="https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/">
+              <h2 class="post-title">
                 为主题用pugjs编写的hexo博客添加网站运行时间
+              </h2>
             </a>
-        </h2>
-        <div class="post-info">
-            <time class="post-time">2020-03-27</time>
-            
-                <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag i-tag
-                                i-tag-warning">
-                    #skill
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/S9URHn2gW5/" class="post-tag i-tag
-                                i-tag-">
-                    #hexo
-                </a>
-            
-                <a href="https://impressionyang.vercel.app/tag/snVfaGhPmT/" class="post-tag i-tag
-                                i-tag-banana">
-                    #beautify
-                </a>
-            
+          </div>
         </div>
-        <div class="post-summary">
-            <div class="post-summary-description">
-                
-                    <h2 id="先导">先导</h2>
+        <!-- 第一层：包含文章描述、时间信息、封面图 -->
+        <div class="post-row-first-floor">
+          <div class="post-preview">
+            <h3 class="post-subtitle">
+              <h2 id="先导">先导</h2>
 <blockquote>
 <p>写这篇帖子的原因是我很想在博客网站下面添加网站的运行时间,网上虽然有教程是怎么添加的,但是他们演示的主题大都是用<code>ejs</code>或者是<code>wig</code>来编写的,而我使用的这个个人很喜欢的<code>stun</code>主题却是用<code>pugjs</code>编写的,实在是很想用,所以根据语法的转换规则修改了一份<code>pug</code>文件下添加的脚本来使用,美滋滋</p>
 </blockquote>
 
-                
-            </div>
-            <a class="btn-readMore" href="https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/">Read More ~</a>
+            </h3>
+            <p class="post-meta">
+              <span class="time">2020-03-27</span>
+              <span>,</span>
+              <span class="post-stats">4 min read</span>
+            </p>
+          </div>
+          
         </div>
+        <!-- 第二层：下划线、占位标签、tags -->
+        <div class="post-row-sec-floor">
+          <hr>
+          <div class="clearfix"></div>
+          
+          <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag">
+            skill
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/S9URHn2gW5/" class="post-tag">
+            hexo
+          </a>
+          
+          <a href="https://impressionyang.vercel.app/tag/snVfaGhPmT/" class="post-tag">
+            beautify
+          </a>
+          
+        </div>
+      </div>
+      </>
+      
+      <!-- 
+      
+      <a class="btn btn-primary float-right" href="https://impressionyang.vercel.app/page/2">下一页 &#9654;</a>
+       -->
     </div>
+  </div>
+</div>
+  
+  
+<div class="page bg-color">
+  <ul class="pagination-ul">
     
-</article>
-
-
-    <div class="pagination-container">
-        
-        
-            <a href="https://impressionyang.vercel.app/page/2" class="btn btn-outline-primary">下一页</a>
-        
-    </div>
-
+    
+      
+        <li class="pagination-li pagination-active">
+            <a href="/page/../">
+              1
+            </a>
+        </li>
+      
+        <li class="pagination-li ">
+            <a href="/page/2">
+              2
+            </a>
+        </li>
+      
+        <li class="pagination-li ">
+            <a href="/page/3">
+              3
+            </a>
+        </li>
+      
+        <li class="pagination-li ">
+            <a href="/page/4">
+              4
+            </a>
+        </li>
+      
+    
+    
+      <li class="pagination-dir">
+        <a href="/page/2">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+            <li class="list-inline-item">
+              <a href="https://github.com/impressionyang" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <!-- <li class="list-inline-item">
+              <a href="https://impressionyang.vercel.app/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li> -->
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>impressionyang的个人分享站</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
         </div>
-        <div class="col-lg-3">
-            
-<div class="id_card i-card">
-    <div class="id_card-avatar"
-         style="background-image: url(https://impressionyang.vercel.app/images/avatar.png?v=1605628453183)">
+      </div>
     </div>
-    <h1 class="id_card-title">
-        Gridea
-    </h1>
-    <h2 class="id_card-description">
-        温故而知新
-    </h2>
-    <ul class="id_card-site-info row">
-        <li class="col-6"><a href="https://impressionyang.vercel.app/archives">文章</a></li>
-        <li class="col-6"><a href="https://impressionyang.vercel.app/tags">标签</a></li>
-        <li class="col-6"><a href="https://impressionyang.vercel.app/archives">38</a></li>
-        <li class="col-6"><a href="https://impressionyang.vercel.app/tags">37</a></li>
-    </ul>
-    <div class="id_card-sns">
-         
-        
-            <a href="https://github.com/impressionyang" target="_blank" title="github"><span
-                        class="vf-icons vf-icon-github"></span></a>
-        
-         
-        
-                <a href="https://impressionyang.vercel.app/atom.xml" target="_blank" title="RSS"><span class="vf-icons vf-icon-rss"></span></a>
-        
-    </div>
-</div>
-            
-    <div class="bulletin-board">
-        <div class="bulletin-board-title">
-            <span class="vf-icons vf-icon-laba" style="margin-right: 5px;color: #ed4014"></span>公告
-        </div>
-        <div class="bulletin-board-content">
-            Just a littile test
-        </div>
-    </div>
-
-            
-                <div class="d-none d-lg-block shadow-sm" style="margin-top: 30px;background-color:#fff; border-radius: 10px;padding-top: 20px; text-align: center;">
-    <h5>标签 TOP20</h5>
-<div id="tags-chart"
-    style="height: 200px; width: 100%;">
-</div>
-</div>
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
-
-<script>
-    var temp = [{"name":"skill","value":23},{"name":"archlinux","value":7},{"name":"program","value":7},{"name":"C++","value":7},{"name":"hexo","value":5},{"name":"install","value":4},{"name":"C","value":4},{"name":"linux","value":4},{"name":"Qt","value":3},{"name":"Plasma","value":3},{"name":"tools","value":3},{"name":"beautify","value":2},{"name":"daily","value":2},{"name":"text","value":2},{"name":"markdown","value":2},{"name":"KDE","value":2},{"name":"plasma-applet","value":2},{"name":"rEFInd","value":1},{"name":"boot loader","value":1},{"name":"QFile","value":1}];
-    let tagsChart = echarts.init(document.getElementById('tags-chart'));
-    let tagsOption = {
-        title: {
-            text: '',
-            top: 0,
-            x: 'center'
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        series: [
-            {
-                name: 'tag',
-                type: 'pie',
-                radius: '50%',
-                color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: temp,
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
-    tagsChart.setOption(tagsOption);
-</script>
-            
-            
-                <div class="site-stats-card shadow-sm">
-    <h6>访问统计</h6>
-    <div id="busuanzi_container_site_uv">
-        <span>本站访客数 : </span><span id="busuanzi_value_site_uv"></span>
-    </div>
-    <div id="busuanzi_container_site_pv">
-        <span>本站总访问量 : </span><span id="busuanzi_value_site_pv"></span>
-    </div>
-</div>
-            
-        </div>
-    </div>
-    <div class="site-footer">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | Theme <a href="//github.com/violetfreesia/gridea-theme-Violet" target="_blank">Violet</a>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-    <script src="https://impressionyang.vercel.app/media/js/main.js"></script>
-
-
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+    <div>
+      <center><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></center>
+      <script>
+          var now = new Date();
+          function createtime() {
+              var grt= new Date("02/18/2020 21:45:12");
+              now.setTime(now.getTime()+250);
+              days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+              hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+              if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+              mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+              seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+              snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+              document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+              document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+          }
+      setInterval("createtime()",250);
+      </script>
+      </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://impressionyang.vercel.app/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  
 </body>
+
 </html>
