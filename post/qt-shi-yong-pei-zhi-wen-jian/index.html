@@ -10,14 +10,14 @@
 <meta name="keywords" content="">
 <meta name="description" content="欢迎访问[impressionyang的个人分享站]的个人博客">
 <meta name="author" content="kveln">
-<title>beautify | impressionyang的个人分享站</title>
+<title>Qt使用配置文件 | impressionyang的个人分享站</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 <link
   href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
   rel='stylesheet' type='text/css'>
-<link rel="alternate" type="application/rss+xml" title="beautify | impressionyang的个人分享站 » Feed"
+<link rel="alternate" type="application/rss+xml" title="Qt使用配置文件 | impressionyang的个人分享站 » Feed"
   href="https://impressionyang.vercel.app/atom.xml">
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -30,9 +30,66 @@
 
 <script>hljs.initHighlightingOnLoad();</script>
 
+  <meta property="og:description" content="Qt使用配置文件" />
+  <meta property="og:url" content="https://impressionyang.vercel.app/post/qt-shi-yong-pei-zhi-wen-jian/" />
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="impressionyang的个人分享站" />
+  <!-- <script src="../assets/styles/scripts/tocScript.js"></script> -->
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://impressionyang.vercel.app">impressionyang的个人分享站</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/post/about">关于</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1609256268303"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Page Header -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand" href="https://impressionyang.vercel.app">impressionyang的个人分享站</a>
@@ -90,9 +147,16 @@
         
           <!-- 没Title为其他页面Header -->
           
-            <!-- 其他页面（archives、tags、about...）Header -->
-            <div class="sub-site-heading">
-              <h1 class="tag-tl">#beautify</h1>
+            <!-- 没Title并且有headerType为Post：文章Header -->
+            <div class="post-heading">
+              <span class="tags">
+                
+              </span>
+              <h1>Qt使用配置文件</h1>
+              <span class="meta">
+                Posted on
+                2020-12-29，2 min read
+              </span>
             </div>
           
         
@@ -100,121 +164,124 @@
     </div>
   </div>
 </header>
-  <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      
-      <!-- 每行的总容器 -->
-      <div class="post-row-container">
-        <!-- 第0层；标题 -->
-        <div class="title-floor">
-          <div class="post-title-container">
-            
-            <a href="https://impressionyang.vercel.app/post/add-canvas-clock-in-pugjs/">
-              <h2 class="post-title">
-                给pugjs的stun主题添加canvas时钟
-              </h2>
-            </a>
-          </div>
-        </div>
-        <!-- 第一层：包含文章描述、时间信息、封面图 -->
-        <div class="post-row-first-floor">
-          <div class="post-preview">
-            <h3 class="post-subtitle">
-              <h2 id="先导">先导</h2>
-<p>首先隔了这么久才继续进行更新的原因是网站备案和毕业设计，加上刚入职没有时间去进行内容更新，以后会继续更新了</p>
-<p>在pugjs中添加一些好用的东西这个系列会长期的添加更新，因为这些都是会用在博客当中的，而且这些操作都比较简单，都是在主题的相应文件位置添加相应代码即可。</p>
-<h2 id="内容介绍">内容介绍</h2>
-<p>这次添加的内容是在右边栏那里加上一个时钟，用来给阅读的人直观地看到时间，时钟的代码是直接从网上拷贝下来的，并且自己做了修改，地址是<a href="https://www.helloweba.net/demo/html5clock/">这里</a>,打开这个链接就能看到一个时钟，此时检查页面元素定位到时钟所在的div标签，其中有一个canvas标签，将其复制下来，并且找到下面与之最近的script标签查看到时钟的逻辑代码，也将其复制下来进行修改后就差不多可以使用了。</p>
-<p><strong>首先声明，代码是直接复制的，复制也没有删除，主要是为了学习用途，如果造成侵权或者修改了不应修改的地方，还请拿出版权证据证明后修改或者删除您的代码，自行复制后造成的一切问题与我无关</strong></p>
-
-            </h3>
-            <p class="post-meta">
-              <span class="time">2020-08-07</span>
-              <span>,</span>
-              <span class="post-stats">8 min read</span>
-            </p>
-          </div>
+  <!-- Post Content -->
+  <article id="post-content-article">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto post-content-container">
           
-        </div>
-        <!-- 第二层：下划线、占位标签、tags -->
-        <div class="post-row-sec-floor">
-          <hr>
-          <div class="clearfix"></div>
-          
-          <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag">
-            skill
-          </a>
-          
-          <a href="https://impressionyang.vercel.app/tag/S9URHn2gW5/" class="post-tag">
-            hexo
-          </a>
-          
-          <a href="https://impressionyang.vercel.app/tag/snVfaGhPmT/" class="post-tag">
-            beautify
-          </a>
-          
-        </div>
-      </div>
-      </>
-      
-      <!-- 每行的总容器 -->
-      <div class="post-row-container">
-        <!-- 第0层；标题 -->
-        <div class="title-floor">
-          <div class="post-title-container">
-            
-            <a href="https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/">
-              <h2 class="post-title">
-                为主题用pugjs编写的hexo博客添加网站运行时间
-              </h2>
-            </a>
-          </div>
-        </div>
-        <!-- 第一层：包含文章描述、时间信息、封面图 -->
-        <div class="post-row-first-floor">
-          <div class="post-preview">
-            <h3 class="post-subtitle">
-              <h2 id="先导">先导</h2>
+          <h2 id="先导">先导</h2>
 <blockquote>
-<p>写这篇帖子的原因是我很想在博客网站下面添加网站的运行时间,网上虽然有教程是怎么添加的,但是他们演示的主题大都是用<code>ejs</code>或者是<code>wig</code>来编写的,而我使用的这个个人很喜欢的<code>stun</code>主题却是用<code>pugjs</code>编写的,实在是很想用,所以根据语法的转换规则修改了一份<code>pug</code>文件下添加的脚本来使用,美滋滋</p>
+<p>本文用于在qt中使用配置文件进行一些配置的保存</p>
 </blockquote>
+<h2 id="方法">方法</h2>
+<p>关键点就是使用qt的一个类<code>QSettings</code>，该类提供一系列接口用于配置文件的操作如读取和写入，支持的配置文件格式有<code>ini</code>、<code>conf</code>等。使用该类在软件启动时进行初始化操作对一些软件的配置进行赋值操作，可以使得上一次保存的配置可以继续使用，增加程序使用的便捷性。</p>
+<!-- more -->
+<h2 id="实现">实现</h2>
+<h3 id="定义">定义</h3>
+<pre><code class="language-C++">QSettings setting = new QSettings(file_path, QSettings::IniFormat);
+</code></pre>
+<h3 id="读取">读取</h3>
+<pre><code class="language-C++">QVaraint value = setting-&gt;value(&quot;key/item&quot;);
+</code></pre>
+<p>讲解</p>
+<ul>
+<li>key是指配置的组的键值</li>
+<li>item是指这个配置组里面的具体的配置项的键值</li>
+<li>返回的是一个QVarant类型的值，可以通过对应的to方法转换为对应的数据，如字符串用<code>toString</code></li>
+<li>如果没有这个配置的话则返回空的QVarant</li>
+</ul>
+<h3 id="写入">写入</h3>
+<pre><code class="language-C++">setting-&gt;setValue(&quot;key/item&quot;, value);
+</code></pre>
+<p>讲解</p>
+<ul>
+<li><code>key</code>和<code>item</code>同上，是用来定位配置项目的。</li>
+<li><code>value</code>则是写入进配置文件的对应配置项的值，类型是QVarant，直接写入值可以自动转换类型</li>
+</ul>
+<h2 id="一些错误">一些错误</h2>
+<h3 id="中文乱码">中文乱码</h3>
+<p>中文乱码是因为没有对配置文件的编码做配置而于系统使用编码不匹配导致的，基本解决方案是将配置文件使用一个比较统一的编码格式，因为我个人会跨平台使用代码，所以我会把配置文件的编码统一保存为<code>utf-8</code>的格式。然后使用方法<code>setIniCodec(QTextCodec::codecForName(&quot;UTF-8&quot;));</code>来设置编码格式。</p>
+<ul>
+<li><strong>注意：使用该方法需要包含头文件<code>#include &lt;QTextCodec&gt;</code>，否则无法使用<code>QTextCodec</code>的静态方法，并且注意配置文件的编码格式和设置的编码格式匹配。</strong></li>
+</ul>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
 
-            </h3>
-            <p class="post-meta">
-              <span class="time">2020-03-27</span>
-              <span>,</span>
-              <span class="post-stats">4 min read</span>
-            </p>
+          <div class="toc-container"><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%85%88%E5%AF%BC">先导</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0">实现</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E8%AF%BB%E5%8F%96">读取</a></li>
+<li><a href="#%E5%86%99%E5%85%A5">写入</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E9%94%99%E8%AF%AF">一些错误</a>
+<ul>
+<li><a href="#%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81">中文乱码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+          
+          <hr />
+          <p class="next-post">下一篇：
+            <a href="https://impressionyang.vercel.app/post/picocom-dialy-use/">
+              <span class="post-title">
+                使用picocm来进行Linux下的串口调试&rarr;
+              </span>
+            </a>
+          </p>
+          
+          <div class="comment" style="text-align: center;">
+            
+            <span id="/post/qt-shi-yong-pei-zhi-wen-jian/" class="leancloud_visitors"
+              data-flag-title="Qt使用配置文件">
+              <em class="post-meta-item-text">阅读量 </em>
+              <i class="leancloud-visitors-count">loading...</i>
+            </span>
+            
+
+            
+            
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1200px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '9bGYviz3w1u6szxQMQKJ3Jt7-gzGzoHsz',
+		appKey: 'tmtw09Txojf9t5xd1DWlJ7jy',
+		avatar: 'robohash',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'comment it',
+		visitor: true,
+	});
+</script>
+
+            
           </div>
-          
-        </div>
-        <!-- 第二层：下划线、占位标签、tags -->
-        <div class="post-row-sec-floor">
-          <hr>
-          <div class="clearfix"></div>
-          
-          <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="post-tag">
-            skill
-          </a>
-          
-          <a href="https://impressionyang.vercel.app/tag/S9URHn2gW5/" class="post-tag">
-            hexo
-          </a>
-          
-          <a href="https://impressionyang.vercel.app/tag/snVfaGhPmT/" class="post-tag">
-            beautify
-          </a>
-          
         </div>
       </div>
-      </>
-      
-      <!-- 
-       -->
-    </div>
-  </div>
-</div>
+  </article>
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -313,6 +380,7 @@
     }
   })(this));</script>
   
+  <script src="https://impressionyang.vercel.app/media/scripts/tocScript.js"></script>
 </body>
 
 </html>

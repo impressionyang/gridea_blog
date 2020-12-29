@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://impressionyang.vercel.app</id>
     <title>impressionyang的个人分享站</title>
-    <updated>2020-12-28T15:25:31.467Z</updated>
+    <updated>2020-12-29T15:38:35.770Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://impressionyang.vercel.app"/>
     <link rel="self" href="https://impressionyang.vercel.app/atom.xml"/>
@@ -10,6 +10,59 @@
     <logo>https://impressionyang.vercel.app/images/avatar.png</logo>
     <icon>https://impressionyang.vercel.app/favicon.ico</icon>
     <rights>All rights reserved 2020, impressionyang的个人分享站</rights>
+    <entry>
+        <title type="html"><![CDATA[Qt使用配置文件]]></title>
+        <id>https://impressionyang.vercel.app/post/qt-shi-yong-pei-zhi-wen-jian/</id>
+        <link href="https://impressionyang.vercel.app/post/qt-shi-yong-pei-zhi-wen-jian/">
+        </link>
+        <updated>2020-12-29T15:34:17.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>本文用于在qt中使用配置文件进行一些配置的保存</p>
+</blockquote>
+<h2 id="方法">方法</h2>
+<p>关键点就是使用qt的一个类<code>QSettings</code>，该类提供一系列接口用于配置文件的操作如读取和写入，支持的配置文件格式有<code>ini</code>、<code>conf</code>等。使用该类在软件启动时进行初始化操作对一些软件的配置进行赋值操作，可以使得上一次保存的配置可以继续使用，增加程序使用的便捷性。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
+<blockquote>
+<p>本文用于在qt中使用配置文件进行一些配置的保存</p>
+</blockquote>
+<h2 id="方法">方法</h2>
+<p>关键点就是使用qt的一个类<code>QSettings</code>，该类提供一系列接口用于配置文件的操作如读取和写入，支持的配置文件格式有<code>ini</code>、<code>conf</code>等。使用该类在软件启动时进行初始化操作对一些软件的配置进行赋值操作，可以使得上一次保存的配置可以继续使用，增加程序使用的便捷性。</p>
+<!-- more -->
+<h2 id="实现">实现</h2>
+<h3 id="定义">定义</h3>
+<pre><code class="language-C++">QSettings setting = new QSettings(file_path, QSettings::IniFormat);
+</code></pre>
+<h3 id="读取">读取</h3>
+<pre><code class="language-C++">QVaraint value = setting-&gt;value(&quot;key/item&quot;);
+</code></pre>
+<p>讲解</p>
+<ul>
+<li>key是指配置的组的键值</li>
+<li>item是指这个配置组里面的具体的配置项的键值</li>
+<li>返回的是一个QVarant类型的值，可以通过对应的to方法转换为对应的数据，如字符串用<code>toString</code></li>
+<li>如果没有这个配置的话则返回空的QVarant</li>
+</ul>
+<h3 id="写入">写入</h3>
+<pre><code class="language-C++">setting-&gt;setValue(&quot;key/item&quot;, value);
+</code></pre>
+<p>讲解</p>
+<ul>
+<li><code>key</code>和<code>item</code>同上，是用来定位配置项目的。</li>
+<li><code>value</code>则是写入进配置文件的对应配置项的值，类型是QVarant，直接写入值可以自动转换类型</li>
+</ul>
+<h2 id="一些错误">一些错误</h2>
+<h3 id="中文乱码">中文乱码</h3>
+<p>中文乱码是因为没有对配置文件的编码做配置而于系统使用编码不匹配导致的，基本解决方案是将配置文件使用一个比较统一的编码格式，因为我个人会跨平台使用代码，所以我会把配置文件的编码统一保存为<code>utf-8</code>的格式。然后使用方法<code>setIniCodec(QTextCodec::codecForName(&quot;UTF-8&quot;));</code>来设置编码格式。</p>
+<ul>
+<li><strong>注意：使用该方法需要包含头文件<code>#include &lt;QTextCodec&gt;</code>，否则无法使用<code>QTextCodec</code>的静态方法，并且注意配置文件的编码格式和设置的编码格式匹配。</strong></li>
+</ul>
+<hr>
+<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
+<center>impressionyang</center>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[使用picocm来进行Linux下的串口调试]]></title>
         <id>https://impressionyang.vercel.app/post/picocom-dialy-use/</id>
@@ -947,79 +1000,6 @@ cp -r /boot/EFI/systemd ~/systemd
 <h2 id="测试">测试</h2>
 <p>带图形界面的测试</p>
 <figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/deepinscreen20200328205119.gif" alt="test" loading="lazy"></figure>
-<hr>
-<center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
-<center>impressionyang</center>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[为主题用pugjs编写的hexo博客添加网站运行时间]]></title>
-        <id>https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/</id>
-        <link href="https://impressionyang.vercel.app/post/add-runing-time-in-pug-script-for-hexo/">
-        </link>
-        <updated>2020-03-27T14:59:08.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="先导">先导</h2>
-<blockquote>
-<p>写这篇帖子的原因是我很想在博客网站下面添加网站的运行时间,网上虽然有教程是怎么添加的,但是他们演示的主题大都是用<code>ejs</code>或者是<code>wig</code>来编写的,而我使用的这个个人很喜欢的<code>stun</code>主题却是用<code>pugjs</code>编写的,实在是很想用,所以根据语法的转换规则修改了一份<code>pug</code>文件下添加的脚本来使用,美滋滋</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="先导">先导</h2>
-<blockquote>
-<p>写这篇帖子的原因是我很想在博客网站下面添加网站的运行时间,网上虽然有教程是怎么添加的,但是他们演示的主题大都是用<code>ejs</code>或者是<code>wig</code>来编写的,而我使用的这个个人很喜欢的<code>stun</code>主题却是用<code>pugjs</code>编写的,实在是很想用,所以根据语法的转换规则修改了一份<code>pug</code>文件下添加的脚本来使用,美滋滋</p>
-</blockquote>
-<!-- more -->
-<h2 id="脚本">脚本</h2>
-<ul>
-<li>语法参考的话可以去<a href="https://www.npmjs.com/package/pug">这里</a></li>
-</ul>
-<p>原来的<code>ejs</code>脚本</p>
-<pre><code class="language-js">&lt;div&gt;
-&lt;span id=&quot;timeDate&quot;&gt;载入天数...&lt;/span&gt;&lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt;
-&lt;script&gt;
-    var now = new Date();
-    function createtime() {
-        var grt= new Date(&quot;08/13/2018 00:00:00&quot;);
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;}
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;}
-        document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;;
-        document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;
-    }
-setInterval(&quot;createtime()&quot;,250);
-&lt;/script&gt;
-&lt;/div&gt;
-</code></pre>
-<p>转换后的<code>pugjs</code>脚本</p>
-<pre><code class="language-pug">div
-  span#timeDate 载入天数...
-  span#times 载入时分秒...
-  script.
-    var now = new Date();
-    function createtime() {
-    var grt= new Date(&quot;08/13/2018 00:00:00&quot;);
-    now.setTime(now.getTime()+250);
-    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-    if(String(hnum).length ==1 ){hnum = &quot;0&quot; + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = &quot;0&quot; + mnum;}
-    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = &quot;0&quot; + snum;}
-    document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;;
-    document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;
-    }
-    setInterval(&quot;createtime()&quot;,250);
-</code></pre>
-<p>然后把上述脚本添加到主题的<code>layout/_partials/footer/footer.pug</code>文件中(不同主题可能文件不一样,请自行参考)即可在网页底部显示网站运行时间了<code>OvO</code>,不过要注意修改一下<code>var grt= new Date(&quot;08/13/2018 00:00:00&quot;);</code>中的起始时间哦!</p>
-<ul>
-<li>效果</li>
-</ul>
-<figure data-type="image" tabindex="1"><img src="https://impressionyang.gitee.io/imgbed/img/blog/deepinscreen20200327231833.gif" alt="run time" loading="lazy"></figure>
-<h2 id="后记">后记</h2>
-<p>后来发现了一个神奇的网站可以帮助从<code>html</code>转到<code>pug</code>,<a href="https://html-to-pug.com/">请戳这里</a>,难受,虽然上面的不难翻译,但是用这个网站不费力是真的....</p>
 <hr>
 <center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
 <center>impressionyang</center>
