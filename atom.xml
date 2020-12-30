@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://impressionyang.vercel.app</id>
     <title>impressionyang的个人分享站</title>
-    <updated>2020-12-29T15:38:35.770Z</updated>
+    <updated>2020-12-30T15:56:44.399Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://impressionyang.vercel.app"/>
     <link rel="self" href="https://impressionyang.vercel.app/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, impressionyang的个人分享站</rights>
     <entry>
         <title type="html"><![CDATA[Qt使用配置文件]]></title>
-        <id>https://impressionyang.vercel.app/post/qt-shi-yong-pei-zhi-wen-jian/</id>
-        <link href="https://impressionyang.vercel.app/post/qt-shi-yong-pei-zhi-wen-jian/">
+        <id>https://impressionyang.vercel.app/post/qt_qsetting/</id>
+        <link href="https://impressionyang.vercel.app/post/qt_qsetting/">
         </link>
         <updated>2020-12-29T15:34:17.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="先导">先导</h2>

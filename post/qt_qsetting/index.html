@@ -10,14 +10,14 @@
 <meta name="keywords" content="">
 <meta name="description" content="欢迎访问[impressionyang的个人分享站]的个人博客">
 <meta name="author" content="kveln">
-<title>C++和Java的变量对比 | impressionyang的个人分享站</title>
+<title>Qt使用配置文件 | impressionyang的个人分享站</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 <link
   href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
   rel='stylesheet' type='text/css'>
-<link rel="alternate" type="application/rss+xml" title="C++和Java的变量对比 | impressionyang的个人分享站 » Feed"
+<link rel="alternate" type="application/rss+xml" title="Qt使用配置文件 | impressionyang的个人分享站 » Feed"
   href="https://impressionyang.vercel.app/atom.xml">
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
@@ -30,8 +30,8 @@
 
 <script>hljs.initHighlightingOnLoad();</script>
 
-  <meta property="og:description" content="C++和Java的变量对比" />
-  <meta property="og:url" content="https://impressionyang.vercel.app/post/cpp-java-variable-diff/" />
+  <meta property="og:description" content="Qt使用配置文件" />
+  <meta property="og:url" content="https://impressionyang.vercel.app/post/qt_qsetting/" />
   <meta property="og:locale" content="zh-CN" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="impressionyang的个人分享站" />
@@ -151,17 +151,17 @@
             <div class="post-heading">
               <span class="tags">
                 
-                <a href="https://impressionyang.vercel.app/tag/TcZ08mUBsR/" class="tag">program</a>
+                <a href="https://impressionyang.vercel.app/tag/OF56BpM3s/" class="tag">QSetting</a>
                 
-                <a href="https://impressionyang.vercel.app/tag/ETMOZ54MMP/" class="tag">C++</a>
+                <a href="https://impressionyang.vercel.app/tag/ja82C-Peo/" class="tag">skill</a>
                 
-                <a href="https://impressionyang.vercel.app/tag/8zSDwZLBT0O/" class="tag">Java</a>
+                <a href="https://impressionyang.vercel.app/tag/4SaIVj4t_m/" class="tag">Qt</a>
                 
               </span>
-              <h1>C++和Java的变量对比</h1>
+              <h1>Qt使用配置文件</h1>
               <span class="meta">
                 Posted on
-                2020-03-20，1 min read
+                2020-12-29，2 min read
               </span>
             </div>
           
@@ -176,89 +176,41 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto post-content-container">
           
-          <h2 id="c和java的变量对比">C++和Java的变量对比</h2>
+          <h2 id="先导">先导</h2>
 <blockquote>
-<p>本贴创建的原因是本人需要做一个<code>C++</code>和<code>Java</code>之间进行<code>socket</code>通信的时候想要确定一下两者之间变量的内存占用情况，经过验证测试得出的结果用于以后用来进行验证</p>
+<p>本文用于在qt中使用配置文件进行一些配置的保存</p>
 </blockquote>
-<ul>
-<li><strong>本次的结果均是在32位系统中得到的，64位的操作系统的内存占用情况可能有所不同！</strong></li>
-</ul>
+<h2 id="方法">方法</h2>
+<p>关键点就是使用qt的一个类<code>QSettings</code>，该类提供一系列接口用于配置文件的操作如读取和写入，支持的配置文件格式有<code>ini</code>、<code>conf</code>等。使用该类在软件启动时进行初始化操作对一些软件的配置进行赋值操作，可以使得上一次保存的配置可以继续使用，增加程序使用的便捷性。</p>
 <!-- more -->
-<h2 id="对比的表格如下">对比的表格如下:</h2>
-<table>
-<thead>
-<tr>
-<th>C++</th>
-<th>usage</th>
-<th>Java</th>
-<th>usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>short</td>
-<td>2 bytes</td>
-<td>short</td>
-<td>2 bytes</td>
-</tr>
-<tr>
-<td>int</td>
-<td>4 bytes</td>
-<td>int</td>
-<td>4 bytes</td>
-</tr>
-<tr>
-<td><em>long</em></td>
-<td><em>4 bytes</em></td>
-<td><strong>long</strong></td>
-<td><strong>8 bytes</strong></td>
-</tr>
-<tr>
-<td>long long</td>
-<td>8 bytes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>float</td>
-<td>4 bytes</td>
-<td>float</td>
-<td>4 bytes</td>
-</tr>
-<tr>
-<td>double</td>
-<td>8 bytes</td>
-<td>double</td>
-<td>8 bytes</td>
-</tr>
-<tr>
-<td>long double</td>
-<td>12 bytes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>bool</td>
-<td>1 byte</td>
-<td>boolean</td>
-<td>1 byte</td>
-</tr>
-<tr>
-<td><em>char</em></td>
-<td><em>1 byte</em></td>
-<td><strong>char</strong></td>
-<td><strong>2 bytes</strong></td>
-</tr>
-<tr>
-<td>unsigned char</td>
-<td>1 byte</td>
-<td>byte</td>
-<td>1 bytes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="后记">后记</h2>
-<p><em>在进行跨平台的<code>socket</code>套接字连接是需要注意变量内存问题</em></p>
+<h2 id="实现">实现</h2>
+<h3 id="定义">定义</h3>
+<pre><code class="language-C++">QSettings setting = new QSettings(file_path, QSettings::IniFormat);
+</code></pre>
+<h3 id="读取">读取</h3>
+<pre><code class="language-C++">QVaraint value = setting-&gt;value(&quot;key/item&quot;);
+</code></pre>
+<p>讲解</p>
+<ul>
+<li>key是指配置的组的键值</li>
+<li>item是指这个配置组里面的具体的配置项的键值</li>
+<li>返回的是一个QVarant类型的值，可以通过对应的to方法转换为对应的数据，如字符串用<code>toString</code></li>
+<li>如果没有这个配置的话则返回空的QVarant</li>
+</ul>
+<h3 id="写入">写入</h3>
+<pre><code class="language-C++">setting-&gt;setValue(&quot;key/item&quot;, value);
+</code></pre>
+<p>讲解</p>
+<ul>
+<li><code>key</code>和<code>item</code>同上，是用来定位配置项目的。</li>
+<li><code>value</code>则是写入进配置文件的对应配置项的值，类型是QVarant，直接写入值可以自动转换类型</li>
+</ul>
+<h2 id="一些错误">一些错误</h2>
+<h3 id="中文乱码">中文乱码</h3>
+<p>中文乱码是因为没有对配置文件的编码做配置而于系统使用编码不匹配导致的，基本解决方案是将配置文件使用一个比较统一的编码格式，因为我个人会跨平台使用代码，所以我会把配置文件的编码统一保存为<code>utf-8</code>的格式。然后使用方法<code>setIniCodec(QTextCodec::codecForName(&quot;UTF-8&quot;));</code>来设置编码格式。</p>
+<ul>
+<li><strong>注意：使用该方法需要包含头文件<code>#include &lt;QTextCodec&gt;</code>，否则无法使用<code>QTextCodec</code>的静态方法，并且注意配置文件的编码格式和设置的编码格式匹配。</strong></li>
+</ul>
 <hr>
 <center><img src="https://impressionyang.gitee.io/imgbed/img/favicon/favicon_64.png" /></center>
 <center>impressionyang</center>
@@ -266,9 +218,20 @@
           <div class="toc-container"><ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#c%E5%92%8Cjava%E7%9A%84%E5%8F%98%E9%87%8F%E5%AF%B9%E6%AF%94">C++和Java的变量对比</a></li>
-<li><a href="#%E5%AF%B9%E6%AF%94%E7%9A%84%E8%A1%A8%E6%A0%BC%E5%A6%82%E4%B8%8B">对比的表格如下:</a></li>
-<li><a href="#%E5%90%8E%E8%AE%B0">后记</a></li>
+<li><a href="#%E5%85%88%E5%AF%BC">先导</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0">实现</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E8%AF%BB%E5%8F%96">读取</a></li>
+<li><a href="#%E5%86%99%E5%85%A5">写入</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E9%94%99%E8%AF%AF">一些错误</a>
+<ul>
+<li><a href="#%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81">中文乱码</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -276,17 +239,17 @@
           
           <hr />
           <p class="next-post">下一篇：
-            <a href="https://impressionyang.vercel.app/post/kde-wallet-login-config/">
+            <a href="https://impressionyang.vercel.app/post/picocom-dialy-use/">
               <span class="post-title">
-                解决KDE下KDE Wallet重装系统后每次登陆需要输入密码&rarr;
+                使用picocm来进行Linux下的串口调试&rarr;
               </span>
             </a>
           </p>
           
           <div class="comment" style="text-align: center;">
             
-            <span id="/post/cpp-java-variable-diff/" class="leancloud_visitors"
-              data-flag-title="C++和Java的变量对比">
+            <span id="/post/qt_qsetting/" class="leancloud_visitors"
+              data-flag-title="Qt使用配置文件">
               <em class="post-meta-item-text">阅读量 </em>
               <i class="leancloud-visitors-count">loading...</i>
             </span>
